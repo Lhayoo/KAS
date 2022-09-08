@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2022 at 11:31 AM
+-- Generation Time: Sep 08, 2022 at 04:32 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,6 +57,13 @@ CREATE TABLE `pemasukan` (
   `kas_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pemasukan`
+--
+
+INSERT INTO `pemasukan` (`id`, `tanggal`, `keterangan`, `jumlah`, `kas_id`) VALUES
+(2, '2022-08-17', 'donatur lomba 17 an', 100000, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -65,8 +72,8 @@ CREATE TABLE `pemasukan` (
 
 CREATE TABLE `pengeluaran` (
   `id` int(11) NOT NULL,
+  `pemasukan_id` int(11) NOT NULL,
   `tanggal` date NOT NULL,
-  `kas_id` int(11) NOT NULL,
   `keterangan` varchar(100) NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -141,7 +148,7 @@ ALTER TABLE `pemasukan`
 --
 ALTER TABLE `pengeluaran`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `kas_id` (`kas_id`);
+  ADD KEY `pemasukan_id` (`pemasukan_id`);
 
 --
 -- Indexes for table `users`
@@ -171,13 +178,13 @@ ALTER TABLE `kas`
 -- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -205,7 +212,7 @@ ALTER TABLE `pemasukan`
 -- Constraints for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  ADD CONSTRAINT `pengeluaran_ibfk_1` FOREIGN KEY (`kas_id`) REFERENCES `kas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pengeluaran_ibfk_1` FOREIGN KEY (`pemasukan_id`) REFERENCES `pemasukan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `warga`
