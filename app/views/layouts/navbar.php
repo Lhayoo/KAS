@@ -1,3 +1,4 @@
+<?php if ($_SESSION['user']['role'] === 'admin' or 'anngota') : ?>
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
     id="layout-navbar">
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -47,7 +48,8 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" <?php if ($data['active'] == 'accountSettings') : ?><?php endif ?>
+                            href="<?php BASE_URL ?>accountSettings">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
@@ -88,3 +90,4 @@
         </div>
     </div>
 </div>
+<?php endif ?>

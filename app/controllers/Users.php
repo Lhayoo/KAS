@@ -14,12 +14,18 @@ class users extends Controller
     {
         $data['active'] = 'users';
         $data['title'] = 'Data User';
+        $data['users'] = $this->model('usersModel')->getUsers();
         $this->view('admin/users/index', $data, 'default');
     }
     public function tambah()
     {
-        $data['active'] = 'users';
-        $data['title'] = 'Tambah User';
-        $this->view('admin/users/tambah', $data, 'default');
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $data['active']  = 'users';
+            $data['title']  = 'Tambah users';
+            $this->view('admin/users/tambah', $data, 'default');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('usersModel')->tambah($_POST);
+        }
     }
 }
