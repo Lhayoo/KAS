@@ -38,8 +38,8 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link <?php if ($data['active'] == 'dataPemasukan') : ?>  <?php endif ?>"
-                        href="<?= BASE_URL ?>dataPemasukan">
+                    <a class="menu-link <?php if ($data['active'] == 'dataPengeluaran') : ?>  <?php endif ?>"
+                        href="<?= BASE_URL ?>dataPengeluaran">
                         <div data-i18n="Without navbar">Data pengeluaran</div>
                     </a>
                 </li>
@@ -56,12 +56,6 @@
                     <a class="menu-link <?php if ($data['active'] == 'dataWarga') : ?>  <?php endif ?>"
                         href="<?= BASE_URL ?>dataWarga">
                         <div data-i18n="Without menu">Data warga</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link <?php if ($data['active'] == 'wargaPindahan') : ?>  <?php endif ?>"
-                        href="<?= BASE_URL ?>wargaPindahan">
-                        <div data-i18n="Without menu">Warga pindahan</div>
                     </a>
                 </li>
             </ul>

@@ -16,4 +16,10 @@ class dataPemasukan extends Controller
         $data['title'] = 'Data Pemasukan';
         $this->view('admin/kas/dataPemasukan/index', $data, 'default');
     }
+    public function tambah()
+    {
+        $data['active'] = 'dataPemasukan';
+        $data['title'] = 'Tambah Pemasukan';
+        $this->view('admin/kas/dataPemasukan/tambah', $data, 'default');
+    }
 }

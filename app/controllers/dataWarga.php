@@ -14,12 +14,12 @@ class dataWarga extends Controller
     {
         $data['active'] = 'dataWarga';
         $data['title'] = 'Data warga';
-        $this->view('admin/warga/dataWarga/index', $data, 'default');
+        $this->view('admin/warga//index', $data, 'default');
     }
     public function tambah()
     {
         $data['active'] = 'dataWarga';
         $data['title'] = 'Tambah warga';
-        $this->view('admin/warga/dataWarga/tambah', $data, 'default');
+        $this->view('admin/warga/tambah', $data, 'default');
     }
 }

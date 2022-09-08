@@ -14,6 +14,7 @@ class dataKas extends Controller
     {
         $data['active'] = 'dataKas';
         $data['title'] = 'Data Kas';
+        $data['kas'] = $this->model('dataKasModel')->getKasById();
         $this->view('anggota/kas/dataKas/index', $data, 'default');
     }
 }

@@ -1,7 +1,7 @@
 <div class="card">
     <div class="d-flex align-items-center justify-content-between px-3 ">
         <h5 class="card-header">Table Kas</h5>
-        <button type="button" class="btn btn-small btn-outline-primary ">Tambah</button>
+        <a href="<?= BASE_URL . 'dataPengeluaran/tambah' ?>" class="btn btn-small btn-outline-primary ">Tambah Data</a>
     </div>
     <div class="table-responsive text-nowrap">
         <table class="table">
