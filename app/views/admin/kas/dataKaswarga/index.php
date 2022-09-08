@@ -1,5 +1,8 @@
 <div class="card">
-    <h5 class="card-header">Table Basic</h5>
+    <div class="d-flex align-items-center justify-content-between px-3 ">
+        <h5 class="card-header">Table Kas</h5>
+        <a href="<?= BASE_URL . 'dataKasWarga/tambah' ?>" class="btn btn-small btn-outline-primary ">Tambah Data</a>
+    </div>
     <div class="table-responsive text-nowrap">
         <table class="table">
             <thead>

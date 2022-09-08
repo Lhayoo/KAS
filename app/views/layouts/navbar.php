@@ -54,13 +54,10 @@
                     </li>
                     <li>
                     <li>
-                        <form action="<?= BASE_URL ?>logout" onsubmit="return confirm('Yakin ingin Logout ?')"
-                            method="POST">
-                            <button class="dropdown-item" type="submit">
-                                <i class="bx bx-power-off me-2"></i>
-                                <span class="align-middle">Log Out</span>
-                            </button>
-                        </form>
+                        <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#logout">
+                            <i class="bx bx-power-off me-2"></i>
+                            <span class="align-middle">Log Out</span>
+                        </button>
                     </li>
                     <div class="dropdown-divider"></div>
                 </ul>
@@ -69,3 +66,25 @@
         </ul>
     </div>
 </nav>
+
+<div class="mt-3">
+    <!-- Modal -->
+    <div class="modal modal-top fade" id="logout" tabindex="-1">
+        <div class="modal-dialog">
+            <form class="modal-content" action="<?= BASE_URL ?>logout" method="post">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                    <h2 class="modal-title text-center">Yakin ingin keluar ?</h2>
+                    <div class="modal-footer mt-2">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            No
+                        </button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

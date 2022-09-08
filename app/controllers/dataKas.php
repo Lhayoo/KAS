@@ -3,7 +3,7 @@
 use App\Core\Controller;
 use App\Core\Middleware;
 
-class Anggota extends Controller
+class dataKas extends Controller
 {
     public function __construct()
     {
@@ -12,8 +12,8 @@ class Anggota extends Controller
     }
     public function index()
     {
-        $data['title'] = 'Home';
-        $data['active'] = 'anggota';
-        $this->view('anggota/dashboard/index', $data, 'default');
+        $data['active'] = 'dataKas';
+        $data['title'] = 'Data Kas';
+        $this->view('anggota/kas/dataKas/index', $data, 'default');
     }
 }

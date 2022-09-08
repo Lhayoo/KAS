@@ -3,6 +3,6 @@
 define('HOST', 'localhost');
 define('USER', 'root');
 define('PASS', '');
-define('DB', 'db_kas');
+define('DB', 'db_warga');
 // base url
 define('BASE_URL', 'http://localhost/KAS/');

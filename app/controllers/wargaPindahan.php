@@ -3,7 +3,7 @@
 use App\Core\Controller;
 use App\Core\Middleware;
 
-class Home extends Controller
+class wargaPindahan extends Controller
 {
     public function __construct()
     {
@@ -12,8 +12,8 @@ class Home extends Controller
     }
     public function index()
     {
-        $data['active'] = 'Dashboard';
-        $data['title'] = 'home';
-        $this->view('admin/home/index', $data, 'default');
+        $data['active'] = 'wargaPindahan';
+        $data['title'] = 'Warga pindahan';
+        $this->view('admin/warga/wargaPindahan/index', $data, 'default');
     }
 }

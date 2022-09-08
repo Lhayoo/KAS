@@ -14,6 +14,12 @@ class dataKasWarga extends Controller
     {
         $data['active'] = 'dataKasWarga';
         $data['title'] = 'Data Kas';
-        $this->view('kas/dataKasWarga/index', $data, 'default');
+        $this->view('admin/kas/dataKasWarga/index', $data, 'default');
+    }
+    public function tambah()
+    {
+        $data['active'] = 'dataKasWarga';
+        $data['title'] = 'Tambah Data Kas';
+        $this->view('admin/kas/dataKasWarga/tambah', $data, 'default');
     }
 }
