@@ -51,6 +51,7 @@
                 <div class="row justify-content-end">
                     <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Send</button>
+                        <a href="<?= BASE_URL . 'dataKasWarga' ?>" class="btn btn-outline-secondary">Cancle</a>
                     </div>
                 </div>
             </form>
