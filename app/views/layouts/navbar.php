@@ -37,8 +37,12 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <?php if ($data['active'] == 'navbar') :  ?>
+                                    <?php while ($info = $data['info']->fetch_assoc()) : ?>
+                                    <span class="fw-semibold d-block"><?= $info['nama'] ?></span>
+                                    <small class="text-muted"><?= $info['role'] ?></small>
+                                    <?php endwhile; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </a>
@@ -55,7 +59,7 @@
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                    <?php endif
+                    <?php endif;
                     ?>
                     <li>
                         <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#logout">

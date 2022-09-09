@@ -25,7 +25,7 @@
                         <?php if ($kas['status'] == 'bayar') : ?>
                         <span class="badge bg-label-success me-1"><?= $kas['status'] ?></span>
                         <?php elseif ($kas['status'] == 'belum') : ?>
-                        <span class="badge bg-label-danger"><?= $kas['status'] ?></span>
+                        <span class="badge bg-label-danger"><?= $kas['status'] ?> bayar</span>
                         <?php endif ?>
                     </td>
                 </tr>
