@@ -1,4 +1,3 @@
-<?php if ($_SESSION['user']['role'] === 'admin' or 'anngota') : ?>
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
     id="layout-navbar">
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -29,7 +28,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<?php BASE_URL ?>">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
@@ -47,14 +46,17 @@
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
+                    <?php if ($_SESSION['user']['role'] === 'anggota') :
+                    ?>
                     <li>
                         <a class="dropdown-item" <?php if ($data['active'] == 'accountSettings') : ?><?php endif ?>
-                            href="<?php BASE_URL ?>accountSettings">
+                            href="<?= BASE_URL . 'accountSettings' ?>">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                    <li>
+                    <?php endif
+                    ?>
                     <li>
                         <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#logout">
                             <i class="bx bx-power-off me-2"></i>
@@ -90,4 +92,3 @@
         </div>
     </div>
 </div>
-<?php endif ?>

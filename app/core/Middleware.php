@@ -32,7 +32,7 @@ class Middleware
     {
         if (isset($_SESSION['user'])) {
             if ($_SESSION['user']['role'] != 'anggota') {
-                return Controller::redirect(BASE_URL . 'forbiden');
+                return Controller::redirect(BASE_URL . 'Forbiden');
             }
         }
     }

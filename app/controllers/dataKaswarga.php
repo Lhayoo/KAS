@@ -14,6 +14,7 @@ class dataKasWarga extends Controller
     {
         $data['active'] = 'dataKasWarga';
         $data['title'] = 'Data Kas';
+        $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
         $this->view('admin/kas/dataKasWarga/index', $data, 'default');
     }
     public function tambah()

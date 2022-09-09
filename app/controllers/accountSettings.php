@@ -8,6 +8,7 @@ class accountSettings extends Controller
     public function __construct()
     {
         Middleware::afterLogin();
+        Middleware::isAnggota();
     }
     public function index()
     {

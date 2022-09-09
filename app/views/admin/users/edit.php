@@ -14,8 +14,8 @@
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                     class='bx bxs-id-card'></i></span>
-                            <input type="text" class="form-control" id="nik" placeholder="Masukan NIK"
-                                aria-label="John Doe" aria-describedby="nik" name="nik" maxlength="16" />
+                            <input type="text" class="form-control" id="nik" placeholder="Masukan NIK..."
+                                aria-label="John Doe" aria-describedby="nik" name="nik" />
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                     class="bx bx-user"></i></span>
-                            <input type="text" class="form-control" id="username" placeholder="Masukan Username"
+                            <input type="text" class="form-control" id="username" placeholder="Masukan Username..."
                                 aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="username" />
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
                             <span id="" class="input-group-text"><i class="bx bx-lock"></i></span>
-                            <input type="password" class="form-control" id="password" placeholder="Masukan Password"
+                            <input type="password" class="form-control" id="password" placeholder="Masukan Password..."
                                 aria-label="John Doe" aria-describedby="password" name="password" />
                         </div>
                     </div>

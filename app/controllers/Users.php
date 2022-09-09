@@ -28,4 +28,16 @@ class users extends Controller
             return $this->model('usersModel')->tambah($_POST);
         }
     }
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $data['active']  = 'users';
+            $data['title']  = 'Edit users';
+            // $data['users'] = $this->model('usersModel')->getUsersById($_GET['id']);
+            $this->view('admin/users/edit', $data, 'default');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('usersModel')->edit($_POST);
+        }
+    }
 }

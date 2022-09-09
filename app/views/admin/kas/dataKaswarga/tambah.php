@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Jumlah</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
@@ -31,7 +31,20 @@
                                     class='bx bxs-wallet'></i></span>
                             <input type="text" class="form-control" id="basic-icon-default-fullname"
                                 placeholder="Masukan jumlah" aria-label="John Doe"
-                                aria-describedby="basic-icon-default-fullname2" name="nama" />
+                                aria-describedby="basic-icon-default-fullname2" name="jumlah" value="5000" readonly />
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Status</label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <select class="form-select" id="exampleFormControlSelect1"
+                                aria-label="Default select example">
+                                <option selected>Pilih status</option>
+                                <option value="bayar">Bayar</option>
+                                <option value="belum">Belum Bayar</option>
+                            </select>
                         </div>
                     </div>
                 </div>
