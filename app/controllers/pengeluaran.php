@@ -15,6 +15,7 @@ class pengeluaran extends Controller
         $data['active'] = 'pengeluaran';
         $data['title'] = 'Data pengeluaran';
         $data['pengeluaran'] = $this->model('pengeluaranModel')->getInfo();
+        $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('anggota/kas/dataPengeluaran/index', $data, 'default');
     }
 }

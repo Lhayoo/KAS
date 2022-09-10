@@ -14,6 +14,7 @@ class Anggota extends Controller
     {
         $data['title'] = 'Home';
         $data['active'] = 'anggota';
+        $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('anggota/dashboard/index', $data, 'default');
     }
 }

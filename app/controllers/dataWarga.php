@@ -15,6 +15,7 @@ class dataWarga extends Controller
         $data['active'] = 'dataWarga';
         $data['title'] = 'Data warga';
         $data['warga'] = $this->model('dataWargaModel')->getInfo();
+        $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('admin/warga//index', $data, 'default');
     }
     public function tambah()

@@ -14,7 +14,7 @@ class Home extends Controller
     {
         $data['active'] = 'Dashboard';
         $data['title'] = 'home';
-        // $data['info'] = $this->model('dataInfoModel')->getInfo();
+        $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('admin/home/index', $data, 'default');
     }
 }

@@ -28,7 +28,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="<?php BASE_URL ?>">
+                        <a class="dropdown-item" href="<?php BASE_URL ?>accountSettings">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
@@ -37,12 +37,10 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <?php if ($data['active'] == 'navbar') :  ?>
-                                    <?php while ($info = $data['info']->fetch_assoc()) : ?>
+                                    <?php foreach ($data['info'] as $info) : ?>
                                     <span class="fw-semibold d-block"><?= $info['nama'] ?></span>
                                     <small class="text-muted"><?= $info['role'] ?></small>
-                                    <?php endwhile; ?>
-                                    <?php endif; ?>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </a>
@@ -59,8 +57,6 @@
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                    <?php endif;
-                    ?>
                     <li>
                         <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#logout">
                             <i class="bx bx-power-off me-2"></i>
@@ -68,6 +64,7 @@
                         </button>
                     </li>
                     <div class="dropdown-divider"></div>
+                    <?php endif; ?>
                 </ul>
             </li>
             <!--/ User -->

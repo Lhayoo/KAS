@@ -15,6 +15,7 @@ class dataPemasukan extends Controller
         $data['active'] = 'dataPemasukan';
         $data['title'] = 'Data Pemasukan';
         $data['pemasukan'] = $this->model('dataPemasukanModel')->getInfo();
+        $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('admin/kas/dataPemasukan/index', $data, 'default');
     }
     public function tambah()

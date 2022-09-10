@@ -14,6 +14,7 @@ class accountSettings extends Controller
     {
         $data['active'] = 'accountSettings';
         $data['title'] = 'Account Settings';
+        $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('accountSettings/index', $data, 'default');
     }
 }

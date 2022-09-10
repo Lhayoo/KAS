@@ -15,6 +15,7 @@ class users extends Controller
         $data['active'] = 'users';
         $data['title'] = 'Data User';
         $data['users'] = $this->model('usersModel')->getUsers();
+        $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('admin/users/index', $data, 'default');
     }
     public function tambah()
