@@ -20,8 +20,13 @@ class dataKasWarga extends Controller
     }
     public function tambah()
     {
-        $data['active'] = 'dataKasWarga';
-        $data['title'] = 'Tambah Data Kas';
-        $this->view('admin/kas/dataKasWarga/tambah', $data, 'default');
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $data['active']  = 'dataKasWarga';
+            $data['title']  = 'Tambah Kas';
+            $this->view('admin/kas/dataKasWarga/tambah', $data, 'default');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('dataKasWargaModel')->tambah($_POST);
+        }
     }
 }
