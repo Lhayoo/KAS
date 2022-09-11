@@ -28,7 +28,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="<?php BASE_URL ?>accountSettings">
+                        <a class="dropdown-item" href="<?php BASE_URL ?>">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
@@ -48,26 +48,27 @@
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
-                    <?php if ($_SESSION['user']['role'] === 'anggota') :
-                    ?>
+                    <?php if ($_SESSION['user']['role'] === 'anggota') : ?>
                     <li>
-                        <a class="dropdown-item" <?php if ($data['active'] == 'accountSettings') : ?><?php endif ?>
+                        <a class="dropdown-item" <?php if ($data['active'] == 'accountSettings') : ?><?php endif; ?>
                             href="<?= BASE_URL . 'accountSettings' ?>">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#logout">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </button>
                     </li>
-                    <div class="dropdown-divider"></div>
-                    <?php endif; ?>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
                 </ul>
+                <!--/ User -->
             </li>
-            <!--/ User -->
         </ul>
     </div>
 </nav>

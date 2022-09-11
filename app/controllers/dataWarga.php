@@ -15,13 +15,25 @@ class dataWarga extends Controller
         $data['active'] = 'dataWarga';
         $data['title'] = 'Data warga';
         $data['warga'] = $this->model('dataWargaModel')->getInfo();
+        $data['id'] = $this->model('dataWargaModel')->getInfo()->fetch_assoc();
         $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('admin/warga//index', $data, 'default');
     }
     public function tambah()
     {
-        $data['active'] = 'dataWarga';
-        $data['title'] = 'Tambah warga';
-        $this->view('admin/warga/tambah', $data, 'default');
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $data['active']  = 'dataWarga';
+            $data['title']  = 'Tambah Warga';
+            $this->view('admin/warga/tambah', $data, 'default');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('dataWargaModel')->tambah($_POST);
+        }
+    }
+    public function hapus()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('dataWargaModel')->hapus();
+        }
     }
 }
