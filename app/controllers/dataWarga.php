@@ -16,6 +16,7 @@ class dataWarga extends Controller
         $data['title'] = 'Data warga';
         $data['warga'] = $this->model('dataWargaModel')->getInfo();
         $data['id'] = $this->model('dataWargaModel')->getInfo()->fetch_assoc();
+        $data['umur'] = date("Y-m-d");
         $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('admin/warga//index', $data, 'default');
     }

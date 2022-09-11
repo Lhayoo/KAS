@@ -11,13 +11,16 @@ class dataWargaModel extends Database
         $query = $this->connect->query("SELECT * FROM warga");
         return $query;
     }
-    public function getUmur($tanggal_lahir)
-    {
-        $tanggal_lahir = new DateTime($tanggal_lahir);
-        $today = new DateTime('today');
-        $y = $today->diff($tanggal_lahir)->y;
-        return $y;
-    }
+    // public function getUmur()
+    // {
+    //     $tanggal_lahir = $this->connect->query("SELECT tanggal_lahir FROM warga limit 1 desc");
+    //     $today = date("Y-m-d");
+    //     $umur = [];
+    //     while ($row = $tanggal_lahir->fetch_assoc()) {
+    //         $umur = $today - $row['tanggal_lahir'];
+    //     }
+    //     return $umur;
+    // }
     public function tambah($post)
     {
         $NIK = $post['nik'];
@@ -28,10 +31,10 @@ class dataWargaModel extends Database
         $status = $post['status'];
         $jenis_kelamin = $post['jenis_kelamin'];
         $tanggal_lahir = $post['tanggal_lahir'];
-        if (empty($NIK) && empty($nama) && empty($alamat) && empty($no_telfon) && empty($pekerjaan) && empty($status) && empty($jenis_kelamin) && empty($tanggal_lahir)) {
+        if (empty($NIK) || empty($nama) || empty($alamat) || empty($no_telfon) || empty($pekerjaan) || empty($status) || empty($jenis_kelamin) || empty($tanggal_lahir)) {
             Flash::setFlash('Data wajin diisi lengkap', 'danger');
         } else {
-            $query = $this->connect->query("INSERT INTO `warga` (`NIK`, `nama`, `alamat`, `no_telfon`, `pekerjaan`, `status`, `jenis_kelamin`, `tanggal_lahir`) VALUES ('$NIK', '$nama', '$alamat`', '$no_telfon', '$pekerjaan', '$status', '$jenis_kelamin', '$tanggal_lahir')");
+            $query = $this->connect->query("INSERT INTO `warga` (`NIK`, `nama`, `alamat`, `no_telfon`, `pekerjaan`, `status`, `jenis_kelamin`, `tanggal_lahir`) VALUES ('$NIK', '$nama', '$alamat', '$no_telfon', '$pekerjaan', '$status', '$jenis_kelamin', '$tanggal_lahir')");
             if ($query) {
                 Flash::setFlash('Data warga berhasil ditambahkan', 'success');
             } else {

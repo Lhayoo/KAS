@@ -26,12 +26,15 @@
                     <?php
                     $no = 1;
                     ?>
-                    <?php while ($warga = $data['warga']->fetch_assoc()) : ?>
+                    <?php foreach ($data['warga'] as $warga) : ?>
                     <td><?= $no++ ?></td>
                     <td><?= $warga['nama'] ?></td>
                     <td><?= $warga['alamat'] ?></td>
                     <td><?= $warga['no_telfon'] ?></td>
-                    <td>21 tahun</td>
+                    <td>
+                        <?php $today = date("Y-m-d");
+                            $tanggal_lahir =  $warga['tanggal_lahir'];
+                            echo  $umur = $today - $tanggal_lahir ?> tahun
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -51,7 +54,7 @@
                         </div>
                     </td>
                 </tr>
-                <?php endwhile ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

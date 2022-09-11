@@ -42,13 +42,13 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-2 form-label" for="no_hp">No hp</label>
+                    <label class="col-sm-2 form-label" for="no_hp">No Telfon</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-phone2" class="input-group-text"><i
                                     class="bx bx-phone"></i></span>
                             <input type="text" id="no_hp" class="form-control phone-mask" placeholder="+62"
-                                aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" name="no_hp"
+                                aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" name="no_telfon"
                                 maxlength="14" />
                         </div>
                     </div>
@@ -69,10 +69,10 @@
                     <label class="col-sm-2 col-form-label" for="status">Status</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <select class="form-select" id="status" aria-label="Default select example">
+                            <select class="form-select" id="status" aria-label="Default select example" name="status">
                                 <option selected>Pilih status</option>
                                 <option value="Menikah">Menikah</option>
-                                <option value="Belum Mennikah">Belum Menikah</option>
+                                <option value="Belum Menikah">Belum Menikah</option>
                             </select>
                         </div>
                     </div>
@@ -82,12 +82,13 @@
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
                             <div class="form-check">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value=""
-                                    id="laki-laki" name="laki-laki" />
+                                <input class="form-check-input" type="radio" value="Laki-Laki" id="laki-laki"
+                                    name="jenis_kelamin" />
                                 <label class="form-check-label" for="laki-laki"> Laki-laki </label>
                             </div>
                             <div class="form-check ps-5">
-                                <input name="perempuan" class="form-check-input" type="radio" value="" id="perempuan" />
+                                <input name="jenis_kelamin" class="form-check-input" type="radio" value="Perempuan"
+                                    id="perempuan" />
                                 <label class="form-check-label" for="perempuan"> Perempuan </label>
                             </div>
                         </div>
