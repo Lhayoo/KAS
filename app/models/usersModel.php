@@ -46,10 +46,10 @@ class usersModel extends Database
         $id = $_POST['id'];
         $query = $this->connect->query("DELETE FROM users WHERE id = '$id'");
         if ($query) {
-            Flash::setFlash('Data berhasil dihapus', 'success');
+            Flash::setFlash('Data berhasil ditambahkan', 'success');
             Controller::redirect(BASE_URL . 'users');
         } else {
-            Flash::setFlash('Data gagal dihapus', 'danger');
+            Flash::setFlash('Data gagal ditambahkan', 'danger');
             Controller::redirect(BASE_URL . 'users');
         }
     }

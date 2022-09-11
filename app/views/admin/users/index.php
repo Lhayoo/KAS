@@ -3,14 +3,15 @@
         <h5 class="card-header">Table users</h5>
         <a href="<?= BASE_URL . 'users/tambah' ?>" class="btn btn-small btn-outline-primary ">Tambah Data</a>
     </div>
+    <?php
+
+    use App\Core\Flash;
+
+    Flash::getFlash();
+    ?>
     <div class="table-responsive text-nowrap text-center">
         <table class="table">
-            <?php
 
-            use App\Core\Flash;
-
-            Flash::getFlash();
-            ?>
             <thead>
                 <tr>
                     <th>No</th>
