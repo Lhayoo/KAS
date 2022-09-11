@@ -16,7 +16,6 @@ class dataWarga extends Controller
         $data['title'] = 'Data warga';
         $data['warga'] = $this->model('dataWargaModel')->getInfo();
         $data['id'] = $this->model('dataWargaModel')->getInfo()->fetch_assoc();
-        $data['umur'] = date("Y-m-d");
         $data['info'] = $this->model('dataInfoModel')->getInfo();
         $this->view('admin/warga//index', $data, 'default');
     }
@@ -35,6 +34,18 @@ class dataWarga extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             return $this->model('dataWargaModel')->hapus();
+        }
+    }
+    public function edit($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $data['active']  = 'dataWarga';
+            $data['title']  = 'Edit Warga';
+            $data['id'] = $this->model('dataWargaModel')->getWargaById($id);
+            $this->view('admin/warga/edit', $data, 'default');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('dataWargaModel')->edit($_POST, $id);
         }
     }
 }

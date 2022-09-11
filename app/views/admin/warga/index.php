@@ -32,20 +32,23 @@
                     <td><?= $warga['alamat'] ?></td>
                     <td><?= $warga['no_telfon'] ?></td>
                     <td>
-                        <?php $today = date("Y-m-d");
-                            $tanggal_lahir =  $warga['tanggal_lahir'];
-                            echo  $umur = $today - $tanggal_lahir ?> tahun
+                        <?php
+                            $lahir = new DateTime($warga['tanggal_lahir']);
+                            $today = new DateTime();
+                            $umur = $today->diff($lahir);
+                            echo $umur->y . " tahun";
+                            ?>
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= BASE_URL . 'users/edit' ?>"><i
+                                <a class="dropdown-item" href="<?= BASE_URL ?>dataWarga/edit/<?= $warga['id'] ?>"><i
                                         class="bx bx-edit-alt me-2"></i>
                                     Edit</a>
                                 <button class="dropdown-item" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#hapus<?= $data['id']['NIK'] ?>">
+                                    data-bs-target="#hapus<?= $data['id']['id'] ?>">
                                     <i class="bx bx-trash me-2"></i>Hapus
                                 </button>
                                 <!-- <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i>
@@ -61,7 +64,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal modal-top fade" id="hapus<?= $data['id']['NIK'] ?>" tabindex="-1">
+<div class="modal modal-top fade" id="hapus<?= $data['id']['id'] ?>" tabindex="-1">
     <div class="modal-dialog">
         <form class="modal-content" action="<?= BASE_URL ?>dataWarga/hapus" method="post">
             <div class="modal-header">

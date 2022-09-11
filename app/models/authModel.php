@@ -16,8 +16,8 @@ class authModel extends Database
             $_SESSION['login'] = true;
             $_SESSION['user'] = $user;
             $id = $user['id'];
-            $date = date('Y-m-d');
-            $this->connect->query("UPDATE `users` SET `last_login` = '$date' WHERE `id` = $id");
+            $last_login = date('Y-m-d H:i:s');
+            $this->connect->query("UPDATE `users` SET `last_login` = '$last_login' WHERE `id` = $id");
             if ($user['role'] == 'admin') {
                 Controller::redirect(BASE_URL);
             } else {

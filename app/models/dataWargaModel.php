@@ -11,16 +11,6 @@ class dataWargaModel extends Database
         $query = $this->connect->query("SELECT * FROM warga");
         return $query;
     }
-    // public function getUmur()
-    // {
-    //     $tanggal_lahir = $this->connect->query("SELECT tanggal_lahir FROM warga limit 1 desc");
-    //     $today = date("Y-m-d");
-    //     $umur = [];
-    //     while ($row = $tanggal_lahir->fetch_assoc()) {
-    //         $umur = $today - $row['tanggal_lahir'];
-    //     }
-    //     return $umur;
-    // }
     public function tambah($post)
     {
         $NIK = $post['nik'];
@@ -46,19 +36,42 @@ class dataWargaModel extends Database
 
     public function getWargaById($id)
     {
-        $query = $this->connect->query("SELECT * FROM warga WHERE NIK = '$id'");
+        $query = $this->connect->query("SELECT * FROM warga WHERE id = '$id'")->fetch_assoc();
         return $query;
     }
     public function hapus()
     {
-        $id = $_POST['nik'];
-        $query = $this->connect->query("DELETE FROM warga WHERE NIK = '$id'");
+        $id = $_POST['id'];
+        $query = $this->connect->query("DELETE FROM warga WHERE id = '$id'");
         if ($query) {
             Flash::setFlash('Data warga berhasil dihapus', 'success');
             Controller::redirect(BASE_URL . 'dataWarga');
         } else {
             Flash::setFlash('Data warga gagal dihapus', 'danger');
             Controller::redirect(BASE_URL . 'dataWarga');
+        }
+    }
+    public function edit($post, $id)
+    {
+        $NIK = $post['nik'];
+        $nama = $post['nama'];
+        $alamat = $post['alamat'];
+        $no_telfon = $post['no_telfon'];
+        $pekerjaan = $post['pekerjaan'];
+        $status = $post['status'];
+        $jenis_kelamin = $post['jenis_kelamin'];
+        $tanggal_lahir = $post['tanggal_lahir'];
+        if (empty($NIK) || empty($nama) || empty($alamat) || empty($no_telfon) || empty($pekerjaan) || empty($status) || empty($jenis_kelamin) || empty($tanggal_lahir)) {
+            Flash::setFlash('Data wajin diisi lengkap', 'danger');
+        } else {
+            $query = $this->connect->query("UPDATE `warga` SET `NIK`='$NIK',`nama` = '$nama', `alamat` = '$alamat', `no_telfon` = '$no_telfon', `pekerjaan` = '$pekerjaan', `status` = '$status', `jenis_kelamin` = '$jenis_kelamin', `tanggal_lahir` = '$tanggal_lahir' WHERE `id` = '$id'");
+            if ($query) {
+                Flash::setFlash('Data warga berhasil diubah', 'success');
+                Controller::redirect(BASE_URL . 'dataWarga');
+            } else {
+                Flash::setFlash('Data warga gagal diubah', 'danger');
+                Controller::redirect(BASE_URL . 'dataWarga/edit/' . $id);
+            }
         }
     }
 }
