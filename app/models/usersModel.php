@@ -11,29 +11,72 @@ class usersModel extends Database
         $query = $this->connect->query("SELECT * FROM users");
         return $query;
     }
-    // public function tambah($_POST)
-    // {
-    //     $nik = $_POST['nik'];
-    //     $username = $_POST['username'];
-    //     $password = $_POST['password'];
-    //     $password_reype = $_POST['retype_password'];
-    //     if (empty($nik) || empty($username) || empty($password) || empty($password_reype)) {
-    //         Flash::setFlash('danger', 'Data tidak boleh kosong');
-    //         Controller::redirect(BASE_URL . 'users/tambah');
-    //     } else {
-    //         if ($password == $password_reype) {
-    //             $query = $this->connect->query("INSERT INTO users (nik, username, password) VALUES ('$nik', '$username', '$password')");
-    //             if ($query) {
-    //                 Flash::setFlash('success', 'Data berhasil ditambahkan');
-    //                 Controller::redirect(BASE_URL . 'users');
-    //             } else {
-    //                 Flash::setFlash('danger', 'Data gagal ditambahkan');
-    //                 Controller::redirect(BASE_URL . 'users/tambah');
-    //             }
-    //         } else {
-    //             Flash::setFlash('danger', 'Password tidak sama');
-    //             Controller::redirect(BASE_URL . 'users/tambah');
-    //         }
-    //     }
-    // }
+    public function tambah($post)
+    {
+        $nik = htmlspecialchars($post['nik']);
+        $username = htmlspecialchars($post['username']);
+        $password = htmlspecialchars($post['password']);
+        $retype = htmlspecialchars($post['retype']);
+        if (empty($nik) || empty($username) || empty($password) || empty($retype)) {
+            Flash::setFlash('Data tidak boleh kosong', 'danger',);
+        } elseif ($this->connect->query("SELECT * FROM warga WHERE NIK = '$nik'")->num_rows == 0) {
+            Flash::setFlash('NIK tidak terdaftar', 'danger');
+        } elseif ($this->connect->query("SELECT * FROM users WHERE username = '$username' OR NIK = '$nik'")->num_rows > 0) {
+            Flash::setFlash('NIk/Username sudah terdaftar', 'danger');
+        } elseif ($password != $retype) {
+            Flash::setFlash('Password tidak sama', 'danger');
+        } else {
+            // $password = password_hash($password, PASSWORD_DEFAULT);
+            $query = $this->connect->query("INSERT INTO `users` (`nik`, `username`, `password`,`role`) VALUES ('$nik', '$username', '$password', 'anggota')");
+            if ($query) {
+                Flash::setFlash('Data berhasil ditambahkan', 'success');
+            } else {
+                Flash::setFlash('Data gagal ditambahkan', 'danger');
+            }
+        }
+        Controller::redirect(BASE_URL . 'users/tambah');
+    }
+    public function getUsernameByid($id)
+    {
+        $query = $this->connect->query("SELECT * FROM users WHERE id = '$id'")->fetch_assoc();
+        return $query;
+    }
+    public function hapus()
+    {
+        $id = $_POST['id'];
+        $query = $this->connect->query("DELETE FROM users WHERE id = '$id'");
+        if ($query) {
+            Flash::setFlash('Data berhasil dihapus', 'success');
+            Controller::redirect(BASE_URL . 'users');
+        } else {
+            Flash::setFlash('Data gagal dihapus', 'danger');
+            Controller::redirect(BASE_URL . 'users');
+        }
+    }
+    public function edit($post)
+    {
+        $id = htmlspecialchars($post['id']);
+        $nik = htmlspecialchars($post['nik']);
+        $username = htmlspecialchars($post['username']);
+        $password = htmlspecialchars($post['password']);
+        $retype = htmlspecialchars($post['retype']);
+        if (empty($nik) || empty($username) || empty($password) || empty($retype)) {
+            Flash::setFlash('Data tidak boleh kosong', 'danger');
+        } elseif ($this->connect->query("SELECT * FROM users WHERE nik = '$nik'")->num_rows < 0) {
+            Flash::setFlash('NIK tidak terdaftar', 'danger');
+        } elseif ($this->connect->query("SELECT * FROM users WHERE username = '$username'")->num_rows > 0) {
+            Flash::setFlash('danger', 'Username sudah terdaftar');
+        } elseif ($password != $retype) {
+            Flash::setFlash('Password tidak sama', 'danger');
+        } else {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $query = $this->connect->query("UPDATE `users` SET `nik` = '$nik', `username` = '$username', `password` = '$password' WHERE `users`.`id` = '$id'");
+            if ($query) {
+                Flash::setFlash('Data berhasil ditambahkan', 'success');
+            } else {
+                Flash::setFlash('Data gagal ditambahkan', 'danger');
+            }
+        }
+        Controller::redirect(BASE_URL . 'users/edit?id=' . $id);
+    }
 }

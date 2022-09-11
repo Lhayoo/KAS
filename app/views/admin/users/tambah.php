@@ -1,7 +1,7 @@
 <div class="col-xxl">
     <div class="card mb-4">
         <div class="card-body">
-            <form action="POST">
+            <form method="POST">
                 <div class="row mb-3">
                     <?php
 
@@ -41,10 +41,10 @@
                     </div>
                 </div>
                 <div class="row mb-3 form-password-toggle">
-                    <label class="col-sm-2 col-form-label" for="password">retype new password</label>
+                    <label class="col-sm-2 col-form-label" for="password">retype password</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <input type="password" id="password" class="form-control" name="password"
+                            <input type="password" id="password" class="form-control" name="retype"
                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                 aria-describedby="password" />
                             <span id="password" class="input-group-text cursor-pointer"><i
@@ -53,7 +53,7 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-sm-10 mt-2">
-                            <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                            <button type="submit" class="btn btn-primary me-2">Send</button>
                             <a type="submit" class="btn btn-outline-secondary"
                                 href="<?= BASE_URL . 'users' ?>">Cancel</a>
                         </div>
