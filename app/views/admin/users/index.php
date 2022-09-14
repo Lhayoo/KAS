@@ -71,7 +71,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-                <input type="hidden" name="id" value="<?= $data['id']['id'] ?>">
+                <input type="text" name="id" value="<?= $data['id']['id'] ?>">
                 <h3 class="modal-title text-center">Yakin ingin melakukan aksi ini?</h4>
                     <div class="modal-footer mt-2">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">

@@ -19,18 +19,17 @@ class dataKasWargaModel extends Database
         if (empty($username) || empty($tanggal) || empty($status)) {
             Flash::setFlash('Data wajin diisi lengkap', 'danger');
         } else {
-            $username = $this->connect->query("SELECT * FROM `users` WHERE `username` = '$username'");
-            if ($username->num_rows > 0) {
-                $username = $username->fetch_assoc();
-                $username = $username['username'];
+            $check = $this->connect->query("SELECT * FROM `users` WHERE `username` = '$username'");
+            if (!$check->num_rows) {
+                Flash::setFlash('Username tidak ditemukan', 'danger');
+            } else {
+                $username = $check->fetch_assoc()['id'];
                 $query = $this->connect->query("INSERT INTO `kas` (`users_id`, `tanggal`, `jumlah`, `status`) VALUES ('$username', '$tanggal', '5000', '$status');");
                 if ($query) {
                     Flash::setFlash('Data kas berhasil ditambahkan', 'success');
                 } else {
                     Flash::setFlash('Data kas gagal ditambahkan', 'danger');
                 }
-            } else {
-                Flash::setFlash('Username tidak ditemukan', 'danger');
             }
         }
         Controller::redirect(BASE_URL . 'dataKasWarga/tambah');

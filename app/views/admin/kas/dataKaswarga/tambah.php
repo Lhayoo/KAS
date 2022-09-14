@@ -3,6 +3,11 @@
         <div class="card-body">
             <form method="POST">
                 <div class="row mb-3">
+                    <?php
+
+                    use App\Core\Flash;
+
+                    Flash::getFlash() ?>
                     <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
