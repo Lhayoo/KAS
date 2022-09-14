@@ -4,7 +4,7 @@ use App\Core\Database;
 use App\Core\Flash;
 use App\Core\Controller;
 
-class dataKaswargaModel extends Database
+class dataKasWargaModel extends Database
 {
     public function getInfo()
     {
@@ -14,18 +14,23 @@ class dataKaswargaModel extends Database
     public function tambah($post)
     {
         $username = htmlspecialchars($post['username']);
-        $tanggal = htmlspecialchars($post['tanggal']);
+        $tanggal = date('Y-m-d');
         $status = htmlspecialchars($post['status']);
         if (empty($username) || empty($tanggal) || empty($status)) {
             Flash::setFlash('Data wajin diisi lengkap', 'danger');
-        } elseif ($this->connect->query("SELECT * FROM users WHERE username='$username'")->num_rows < 0) {
-            Flash::setFlash('Username tidak terdaftar', 'danger');
         } else {
-            $query = $this->connect->query("INSERT INTO kas (`username`, `tanggal`,`5000`, `status`) VALUES ('$username', '$tanggal', '$status')");
-            if ($query) {
-                Flash::setFlash('Data kas berhasil ditambahkan', 'success');
+            $username = $this->connect->query("SELECT * FROM `users` WHERE `username` = '$username'");
+            if ($username->num_rows > 0) {
+                $username = $username->fetch_assoc();
+                $username = $username['username'];
+                $query = $this->connect->query("INSERT INTO `kas` (`users_id`, `tanggal`, `jumlah`, `status`) VALUES ('$username', '$tanggal', '5000', '$status');");
+                if ($query) {
+                    Flash::setFlash('Data kas berhasil ditambahkan', 'success');
+                } else {
+                    Flash::setFlash('Data kas gagal ditambahkan', 'danger');
+                }
             } else {
-                Flash::setFlash('Data kas gagal ditambahkan', 'danger');
+                Flash::setFlash('Username tidak ditemukan', 'danger');
             }
         }
         Controller::redirect(BASE_URL . 'dataKasWarga/tambah');

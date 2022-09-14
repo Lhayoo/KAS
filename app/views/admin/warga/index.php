@@ -44,11 +44,11 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= BASE_URL ?>dataWarga/edit/<?= $warga['id'] ?>"><i
+                                <a class="dropdown-item" href="<?= BASE_URL ?>dataWarga/edit/<?= $warga['NIK'] ?>"><i
                                         class="bx bx-edit-alt me-2"></i>
                                     Edit</a>
                                 <button class="dropdown-item" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#hapus<?= $data['id']['id'] ?>">
+                                    data-bs-target="#hapus<?= $data['id']['NIK'] ?>">
                                     <i class="bx bx-trash me-2"></i>Hapus
                                 </button>
                                 <!-- <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i>

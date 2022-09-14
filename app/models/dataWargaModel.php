@@ -13,14 +13,14 @@ class dataWargaModel extends Database
     }
     public function tambah($post)
     {
-        $NIK = $post['nik'];
-        $nama = $post['nama'];
-        $alamat = $post['alamat'];
-        $no_telfon = $post['no_telfon'];
-        $pekerjaan = $post['pekerjaan'];
-        $status = $post['status'];
-        $jenis_kelamin = $post['jenis_kelamin'];
-        $tanggal_lahir = $post['tanggal_lahir'];
+        $NIK = htmlspecialchars($post['nik']);
+        $nama = htmlspecialchars($post['nama']);
+        $alamat = htmlspecialchars($post['alamat']);
+        $no_telfon = htmlspecialchars($post['no_telfon']);
+        $pekerjaan = htmlspecialchars($post['pekerjaan']);
+        $status = htmlspecialchars($post['status']);
+        $jenis_kelamin = htmlspecialchars($post['jenis_kelamin']);
+        $tanggal_lahir = htmlspecialchars($post['tanggal_lahir']);
         if (empty($NIK) || empty($nama) || empty($alamat) || empty($no_telfon) || empty($pekerjaan) || empty($status) || empty($jenis_kelamin) || empty($tanggal_lahir)) {
             Flash::setFlash('Data wajin diisi lengkap', 'danger');
         } else {
@@ -34,15 +34,15 @@ class dataWargaModel extends Database
         Controller::redirect(BASE_URL . 'dataWarga/tambah');
     }
 
-    public function getWargaById($id)
+    public function getWargaById($NIK)
     {
-        $query = $this->connect->query("SELECT * FROM warga WHERE id = '$id'")->fetch_assoc();
+        $query = $this->connect->query("SELECT * FROM warga WHERE NIK = '$NIK'")->fetch_assoc();
         return $query;
     }
     public function hapus()
     {
-        $id = $_POST['id'];
-        $query = $this->connect->query("DELETE FROM warga WHERE id = '$id'");
+        $id = $_POST['nik'];
+        $query = $this->connect->query("DELETE FROM warga WHERE NIK = '$id'");
         if ($query) {
             Flash::setFlash('Data warga berhasil dihapus', 'success');
             Controller::redirect(BASE_URL . 'dataWarga');
@@ -51,26 +51,26 @@ class dataWargaModel extends Database
             Controller::redirect(BASE_URL . 'dataWarga');
         }
     }
-    public function edit($post, $id)
+    public function edit($post)
     {
-        $NIK = $post['nik'];
-        $nama = $post['nama'];
-        $alamat = $post['alamat'];
-        $no_telfon = $post['no_telfon'];
-        $pekerjaan = $post['pekerjaan'];
-        $status = $post['status'];
-        $jenis_kelamin = $post['jenis_kelamin'];
-        $tanggal_lahir = $post['tanggal_lahir'];
+        $NIK = htmlspecialchars($post['nik']);
+        $nama = htmlspecialchars($post['nama']);
+        $alamat = htmlspecialchars($post['alamat']);
+        $no_telfon = htmlspecialchars($post['no_telfon']);
+        $pekerjaan = htmlspecialchars($post['pekerjaan']);
+        $status = htmlspecialchars($post['status']);
+        $jenis_kelamin = htmlspecialchars($post['jenis_kelamin']);
+        $tanggal_lahir = htmlspecialchars($post['tanggal_lahir']);
         if (empty($NIK) || empty($nama) || empty($alamat) || empty($no_telfon) || empty($pekerjaan) || empty($status) || empty($jenis_kelamin) || empty($tanggal_lahir)) {
             Flash::setFlash('Data wajin diisi lengkap', 'danger');
         } else {
-            $query = $this->connect->query("UPDATE `warga` SET `NIK`='$NIK',`nama` = '$nama', `alamat` = '$alamat', `no_telfon` = '$no_telfon', `pekerjaan` = '$pekerjaan', `status` = '$status', `jenis_kelamin` = '$jenis_kelamin', `tanggal_lahir` = '$tanggal_lahir' WHERE `id` = '$id'");
+            $query = $this->connect->query("UPDATE `warga` SET `nama` = '$nama', `alamat` = '$alamat', `no_telfon` = '$no_telfon', `pekerjaan` = '$pekerjaan', `status` = '$status', `jenis_kelamin` = '$jenis_kelamin', `tanggal_lahir` = '$tanggal_lahir' WHERE `NIK` = '$NIK'");
             if ($query) {
                 Flash::setFlash('Data warga berhasil diubah', 'success');
                 Controller::redirect(BASE_URL . 'dataWarga');
             } else {
                 Flash::setFlash('Data warga gagal diubah', 'danger');
-                Controller::redirect(BASE_URL . 'dataWarga/edit/' . $id);
+                Controller::redirect(BASE_URL . 'dataWarga/edit/' . $NIK);
             }
         }
     }

@@ -11,11 +11,11 @@
                     <label class="col-sm-2 col-form-label" for="nik">NIK</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                    class='bx bxs-id-card'></i></span>
+                            <!-- <span id="basic-icon-default-fullname2" class="input-group-text"><i
+                                    class='bx bxs-id-card'></i></span> -->
                             <input type="text" class="form-control" id="nik" placeholder="Masukan NIK"
                                 aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="nik"
-                                maxlength="16" value="<?= $data['id']['NIK'] ?>" />
+                                maxlength="16" value="<?= $data['id']['NIK'] ?>" readonly />
                         </div>
                     </div>
                 </div>

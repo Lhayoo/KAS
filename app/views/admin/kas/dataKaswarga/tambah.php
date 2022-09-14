@@ -14,15 +14,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tanggal</label>
-                    <div class="col-sm-10">
+                    <div clasSs="col-sm-10">
                         <div class="input-group input-group-merge">
                             <input type="date" class="form-control" id="basic-icon-default-fullname"
                                 aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="tanggal" />
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Jumlah</label>
                     <div class="col-sm-10">
