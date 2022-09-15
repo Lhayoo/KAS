@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2022 at 04:32 PM
+-- Generation Time: Sep 15, 2022 at 01:09 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -40,8 +40,10 @@ CREATE TABLE `kas` (
 --
 
 INSERT INTO `kas` (`id`, `users_id`, `tanggal`, `jumlah`, `status`) VALUES
-(1, 2, '2022-09-08', 2000, 'bayar'),
-(2, 2, '2022-09-08', 2000, 'belum');
+(4, 9, '2022-08-17', 5000, 'bayar'),
+(5, 7, '2022-09-14', 5005, 'bayar'),
+(7, 9, '2022-09-14', 5000, 'bayar'),
+(8, 9, '2022-09-14', 5000, 'bayar');
 
 -- --------------------------------------------------------
 
@@ -56,13 +58,6 @@ CREATE TABLE `pemasukan` (
   `jumlah` int(11) NOT NULL,
   `kas_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `pemasukan`
---
-
-INSERT INTO `pemasukan` (`id`, `tanggal`, `keterangan`, `jumlah`, `kas_id`) VALUES
-(2, '2022-08-17', 'donatur lomba 17 an', 100000, 1);
 
 -- --------------------------------------------------------
 
@@ -90,7 +85,7 @@ CREATE TABLE `users` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role` enum('admin','anggota') NOT NULL,
-  `last_login` date NOT NULL
+  `last_login` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -98,8 +93,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `NIK`, `username`, `password`, `role`, `last_login`) VALUES
-(1, 0, 'admin', 'admin', 'admin', '2022-09-08'),
-(2, 1, 'anggota', 'anggota', 'anggota', '2022-09-08');
+(7, 1, 'admin', 'admin', 'admin', '2022-09-14 13:45:09'),
+(9, 12, 'alam', 'alam123', 'anggota', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -123,7 +118,8 @@ CREATE TABLE `warga` (
 --
 
 INSERT INTO `warga` (`NIK`, `nama`, `alamat`, `no_telfon`, `pekerjaan`, `status`, `jenis_kelamin`, `tanggal_lahir`) VALUES
-(1, 'alam', 'medono', 8617238, 'alm', '', 'Laki-Laki', '2022-09-01');
+(12, 'admin', 'admn', 0, 'admin', 'Menikah', 'Laki-Laki', '2019-02-14'),
+(1312, 'asdad', 'adad', 2132, 'asdasd', 'Menikah', 'Laki-Laki', '2022-09-14');
 
 --
 -- Indexes for dumped tables
@@ -172,7 +168,7 @@ ALTER TABLE `warga`
 -- AUTO_INCREMENT for table `kas`
 --
 ALTER TABLE `kas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pemasukan`
@@ -190,7 +186,7 @@ ALTER TABLE `pengeluaran`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -213,12 +209,6 @@ ALTER TABLE `pemasukan`
 --
 ALTER TABLE `pengeluaran`
   ADD CONSTRAINT `pengeluaran_ibfk_1` FOREIGN KEY (`pemasukan_id`) REFERENCES `pemasukan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `warga`
---
-ALTER TABLE `warga`
-  ADD CONSTRAINT `warga_ibfk_1` FOREIGN KEY (`NIK`) REFERENCES `users` (`NIK`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
