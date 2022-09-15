@@ -62,7 +62,6 @@
 </div>
 
 <!-- Modal -->
-
 <?php foreach ($data['warga'] as $warga) : ?>
 <div class="modal modal-top fade" id="hapus<?= $warga['NIK'] ?>" tabindex="-1">
     <div class="modal-dialog">

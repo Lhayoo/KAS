@@ -23,6 +23,8 @@ class dataKasWarga extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['active']  = 'dataKasWarga';
             $data['title']  = 'Tambah Kas';
+            $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
+            $data['info'] = $this->model('dataInfoModel')->getInfo();
             $this->view('admin/kas/dataKasWarga/tambah', $data, 'default');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

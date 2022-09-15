@@ -5,6 +5,7 @@
     </div>
     <div class="table-responsive text-nowrap text-center">
         <table class="table">
+
             <thead>
                 <tr>
                     <th>No</th>
@@ -19,8 +20,8 @@
                 <tr>
                     <?php
                     $no = 1;
+                    foreach ($data['kas'] as $kas) :
                     ?>
-                    <?php while ($kas = $data['kas']->fetch_assoc()) : ?>
                     <td><?= $no++ ?></td>
                     <td><?= $kas['nama'] ?></td>
                     <td><?= $kas['tanggal'] ?></td>
@@ -41,14 +42,39 @@
                                 <a class="dropdown-item" href="<?= BASE_URL . 'users/edit' ?>"><i
                                         class="bx bx-edit-alt me-2"></i>
                                     Edit</a>
-                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i>
-                                    Delete</a>
+                                <button class="dropdown-item" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#hapus<?= $kas['id'] ?>">
+                                    <i class="bx bx-trash me-2"></i>Hapus
+                                </button>
                             </div>
                         </div>
                     </td>
                 </tr>
-                <?php endwhile ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 </div>
+
+<!-- Modal -->
+<?php foreach ($data['kas'] as $kas) : ?>
+<div class="modal modal-top fade" id="hapus<?= $kas['id'] ?>" tabindex="-1">
+    <div class="modal-dialog">
+        <form class="modal-content" action="<?= BASE_URL ?>dataKasWarga/hapus" method="post">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+                <input type="hidden" name="nik" value="<?= $kas['id'] ?>">
+                <h3 class="modal-title text-center">Yakin ingin melakukan aksi ini?</h4>
+                    <div class="modal-footer mt-2">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            No
+                        </button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php endforeach; ?>
