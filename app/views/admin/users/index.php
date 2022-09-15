@@ -27,7 +27,7 @@
                     <?php
                     $no = 1;
                     ?>
-                    <?php while ($users = $data['users']->fetch_assoc()) : ?>
+                    <?php foreach ($data['users'] as $users) : ?>
                     <td><?= $no++ ?></td>
                     <td><?= $users['NIK'] ?></td>
                     <td><?= $users['username'] ?></td>
@@ -49,14 +49,14 @@
                                         class="bx bx-edit-alt me-2"></i>
                                     Edit</a>
                                 <button class="dropdown-item" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#hapus<?= $data['id']['id'] ?>">
+                                    data-bs-target="#hapus<?= $users['id'] ?>">
                                     <i class="bx bx-trash me-2"></i>Hapus
                                 </button>
                             </div>
                         </div>
                     </td>
                 </tr>
-                <?php endwhile ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -64,14 +64,15 @@
 
 
 <!-- Modal -->
-<div class="modal modal-top fade" id="hapus<?= $data['id']['id'] ?>" tabindex="-1">
+<?php foreach ($data['users'] as $users) : ?>
+<div class="modal modal-top fade" id="hapus<?= $users['id'] ?>" tabindex="-1">
     <div class="modal-dialog">
         <form class="modal-content" action="<?= BASE_URL ?>users/hapus" method="post">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-                <input type="text" name="id" value="<?= $data['id']['id'] ?>">
+                <input type="hidden" name="id" value="<?= $users['id'] ?>">
                 <h3 class="modal-title text-center">Yakin ingin melakukan aksi ini?</h4>
                     <div class="modal-footer mt-2">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -83,4 +84,4 @@
         </form>
     </div>
 </div>
-</div>
+<?php endforeach; ?>

@@ -48,11 +48,9 @@
                                         class="bx bx-edit-alt me-2"></i>
                                     Edit</a>
                                 <button class="dropdown-item" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#hapus<?= $data['id']['NIK'] ?>">
+                                    data-bs-target="#hapus<?= $warga['NIK'] ?>">
                                     <i class="bx bx-trash me-2"></i>Hapus
                                 </button>
-                                <!-- <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i>
-                                    Delete</a> -->
                             </div>
                         </div>
                     </td>
@@ -64,14 +62,16 @@
 </div>
 
 <!-- Modal -->
-<div class="modal modal-top fade" id="hapus<?= $data['id']['NIK'] ?>" tabindex="-1">
+
+<?php foreach ($data['warga'] as $warga) : ?>
+<div class="modal modal-top fade" id="hapus<?= $warga['NIK'] ?>" tabindex="-1">
     <div class="modal-dialog">
         <form class="modal-content" action="<?= BASE_URL ?>dataWarga/hapus" method="post">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-                <input type="text" name="nik" value="<?= $data['id']['NIK'] ?>">
+                <input type="hidden" name="nik" value="<?= $warga['NIK'] ?>">
                 <h3 class="modal-title text-center">Yakin ingin melakukan aksi ini?</h4>
                     <div class="modal-footer mt-2">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -83,3 +83,4 @@
         </form>
     </div>
 </div>
+<?php endforeach; ?>
