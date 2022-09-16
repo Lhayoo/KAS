@@ -36,7 +36,7 @@ class usersModel extends Database
         }
         Controller::redirect(BASE_URL . 'users/tambah');
     }
-    public function getUsernameByid($id)
+    public function getUsersByid($id)
     {
         $query = $this->connect->query("SELECT * FROM users WHERE id = '$id'")->fetch_assoc();
         return $query;

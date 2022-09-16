@@ -15,7 +15,8 @@
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                     class='bx bxs-id-card'></i></span>
                             <input type="text" class="form-control" id="nik" placeholder="Masukan NIK..."
-                                aria-label="John Doe" aria-describedby="nik" name="nik" />
+                                aria-label="John Doe" aria-describedby="nik" name="nik"
+                                value="<?= $data['users']['NIK'] ?>" />
                         </div>
                     </div>
                 </div>
@@ -26,7 +27,8 @@
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                     class="bx bx-user"></i></span>
                             <input type="text" class="form-control" id="username" placeholder="Masukan Username..."
-                                aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="username" />
+                                aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="username"
+                                value="<?= $data['users']['username'] ?>" />
                         </div>
                     </div>
                 </div>

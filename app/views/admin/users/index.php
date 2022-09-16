@@ -45,7 +45,7 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= BASE_URL . 'users/edit' ?>"><i
+                                <a class="dropdown-item" href="<?= BASE_URL ?>users/edit/<?= $users['id'] ?>"><i
                                         class="bx bx-edit-alt me-2"></i>
                                     Edit</a>
                                 <button class="dropdown-item" type="button" data-bs-toggle="modal"
