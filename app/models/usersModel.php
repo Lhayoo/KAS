@@ -62,6 +62,8 @@ class usersModel extends Database
         $retype = htmlspecialchars($post['retype']);
         if (empty($nik) || empty($username) || empty($password) || empty($retype)) {
             Flash::setFlash('Data tidak boleh kosong', 'danger');
+        } elseif ($this->connect->query("SELECT * FROM warga WHERE NIK = '$nik'")->num_rows > 0) {
+            Flash::setFlash('NIK sudah terdaftar', 'danger');
         } elseif ($this->connect->query("SELECT * FROM users WHERE nik = '$nik'")->num_rows < 0) {
             Flash::setFlash('NIK tidak terdaftar', 'danger');
         } elseif ($this->connect->query("SELECT * FROM users WHERE username = '$username'")->num_rows > 0) {
@@ -70,7 +72,7 @@ class usersModel extends Database
             Flash::setFlash('Password tidak sama', 'danger');
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
-            $query = $this->connect->query("UPDATE `users` SET `nik` = '$nik', `username` = '$username', `password` = '$password' WHERE `users`.`id` = '$id'");
+            $query = $this->connect->query("UPDATE `users` SET `NIK` = '$nik', `username` = '$username', `password` = '$password' WHERE `users`.`id` = '$id'");
             if ($query) {
                 Flash::setFlash('Data berhasil ditambahkan', 'success');
             } else {
