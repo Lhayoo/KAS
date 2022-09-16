@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2022 at 01:09 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Waktu pembuatan: 16 Sep 2022 pada 13.33
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kas`
+-- Struktur dari tabel `kas`
 --
 
 CREATE TABLE `kas` (
@@ -36,33 +36,30 @@ CREATE TABLE `kas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kas`
+-- Dumping data untuk tabel `kas`
 --
 
 INSERT INTO `kas` (`id`, `users_id`, `tanggal`, `jumlah`, `status`) VALUES
-(4, 9, '2022-08-17', 5000, 'bayar'),
-(5, 7, '2022-09-14', 5005, 'bayar'),
-(7, 9, '2022-09-14', 5000, 'bayar'),
-(8, 9, '2022-09-14', 5000, 'bayar');
+(15, 10, '2022-09-16', 5000, 'bayar'),
+(16, 9, '2022-09-16', 5000, 'bayar');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pemasukan`
+-- Struktur dari tabel `pemasukan`
 --
 
 CREATE TABLE `pemasukan` (
   `id` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `keterangan` varchar(100) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `kas_id` int(11) NOT NULL
+  `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengeluaran`
+-- Struktur dari tabel `pengeluaran`
 --
 
 CREATE TABLE `pengeluaran` (
@@ -73,10 +70,28 @@ CREATE TABLE `pengeluaran` (
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `pengeluaran`
+--
+
+INSERT INTO `pengeluaran` (`id`, `pemasukan_id`, `tanggal`, `keterangan`, `jumlah`) VALUES
+(2, 0, '2022-09-16', 'Lomba ', 10000);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `saldo`
+--
+
+CREATE TABLE `saldo` (
+  `id` int(11) NOT NULL,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -89,17 +104,18 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `NIK`, `username`, `password`, `role`, `last_login`) VALUES
-(7, 1, 'admin', 'admin', 'admin', '2022-09-14 13:45:09'),
-(9, 12, 'alam', 'alam123', 'anggota', '0000-00-00 00:00:00');
+(7, 1, 'admin', 'admin', 'admin', '2022-09-16 12:14:50'),
+(9, 12, 'alam', 'alam123', 'anggota', '2022-09-16 12:12:06'),
+(10, 1312, 'ahmad', '123', 'anggota', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `warga`
+-- Struktur dari tabel `warga`
 --
 
 CREATE TABLE `warga` (
@@ -114,7 +130,7 @@ CREATE TABLE `warga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `warga`
+-- Dumping data untuk tabel `warga`
 --
 
 INSERT INTO `warga` (`NIK`, `nama`, `alamat`, `no_telfon`, `pekerjaan`, `status`, `jenis_kelamin`, `tanggal_lahir`) VALUES
@@ -126,28 +142,33 @@ INSERT INTO `warga` (`NIK`, `nama`, `alamat`, `no_telfon`, `pekerjaan`, `status`
 --
 
 --
--- Indexes for table `kas`
+-- Indeks untuk tabel `kas`
 --
 ALTER TABLE `kas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_users` (`users_id`);
 
 --
--- Indexes for table `pemasukan`
+-- Indeks untuk tabel `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kas_id` (`kas_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pengeluaran`
+-- Indeks untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pemasukan_id` (`pemasukan_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `saldo`
+--
+ALTER TABLE `saldo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -155,60 +176,54 @@ ALTER TABLE `users`
   ADD KEY `NIK_id` (`NIK`);
 
 --
--- Indexes for table `warga`
+-- Indeks untuk tabel `warga`
 --
 ALTER TABLE `warga`
   ADD PRIMARY KEY (`NIK`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `kas`
+-- AUTO_INCREMENT untuk tabel `kas`
 --
 ALTER TABLE `kas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `pemasukan`
+-- AUTO_INCREMENT untuk tabel `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `pengeluaran`
+-- AUTO_INCREMENT untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `saldo`
+--
+ALTER TABLE `saldo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `kas`
+-- Ketidakleluasaan untuk tabel `kas`
 --
 ALTER TABLE `kas`
   ADD CONSTRAINT `kas_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `pemasukan`
---
-ALTER TABLE `pemasukan`
-  ADD CONSTRAINT `pemasukan_ibfk_1` FOREIGN KEY (`kas_id`) REFERENCES `kas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `pengeluaran`
---
-ALTER TABLE `pengeluaran`
-  ADD CONSTRAINT `pengeluaran_ibfk_1` FOREIGN KEY (`pemasukan_id`) REFERENCES `pemasukan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
