@@ -8,23 +8,23 @@ class dataKasWargaModel extends Database
 {
     public function getInfo()
     {
-        $query = $this->connect->query("SELECT `warga`.`nama`,`kas`.`tanggal`,`kas`.`jumlah`,`kas`.`status` FROM kas,warga,users WHERE kas.users_id=users.id AND users.NIK=warga.NIK ");
+        $query = $this->connect->query("SELECT `kas`.`id`,`warga`.`nama`,`kas`.`tanggal`,`kas`.`jumlah`,`kas`.`status` FROM kas,warga,users WHERE kas.users_id=users.id AND users.NIK=warga.NIK ");
         return $query;
     }
     public function tambah($post)
     {
-        $username = htmlspecialchars($post['username']);
+        $id = htmlspecialchars($post['id']);
         $tanggal = date('Y-m-d');
         $status = htmlspecialchars($post['status']);
-        if (empty($username) || empty($tanggal) || empty($status)) {
+        if (empty($id) || empty($tanggal) || empty($status)) {
             Flash::setFlash('Data wajin diisi lengkap', 'danger');
         } else {
-            $check = $this->connect->query("SELECT * FROM `users` WHERE `username` = '$username'");
-            if (!$check->num_rows) {
-                Flash::setFlash('Username tidak ditemukan', 'danger');
+            $tanggal = date('Y-m-d');
+            $ceheck = $this->connect->query("SELECT * FROM kas WHERE users_id='$id' AND tanggal='$tanggal'");
+            if ($ceheck->num_rows) {
+                Flash::setFlash('Kas telah di input', 'danger');
             } else {
-                $username = $check->fetch_assoc()['id'];
-                $query = $this->connect->query("INSERT INTO `kas` (`users_id`, `tanggal`, `jumlah`, `status`) VALUES ('$username', '$tanggal', '5000', '$status');");
+                $query = $this->connect->query("INSERT INTO `kas` (`users_id`, `tanggal`, `jumlah`, `status`) VALUES ('$id', '$tanggal', '5000', '$status');");
                 if ($query) {
                     Flash::setFlash('Data kas berhasil ditambahkan', 'success');
                 } else {
@@ -33,5 +33,42 @@ class dataKasWargaModel extends Database
             }
         }
         Controller::redirect(BASE_URL . 'dataKasWarga/tambah');
+    }
+    public function getUser()
+    {
+        $query = $this->connect->query("SELECT * FROM users,warga WHERE role = 'anggota' AND users.NIK=warga.NIK");
+        return $query;
+    }
+    public function getKasById($id)
+    {
+        $query = $this->connect->query("SELECT * FROM kas WHERE id = '$id'")->fetch_assoc();
+        return $query;
+    }
+    public function edit($post)
+    {
+        $id = htmlspecialchars($post['id']);
+        $status = htmlspecialchars($post['status']);
+        if (empty($id) || empty($status)) {
+            Flash::setFlash('Data wajin diisi lengkap', 'danger');
+        } else {
+            $query = $this->connect->query("UPDATE `kas` SET `status` = '$status' WHERE id = '$id';");
+            if ($query) {
+                Flash::setFlash('Data kas berhasil diubah', 'success');
+            } else {
+                Flash::setFlash('Data kas gagal diubah', 'danger');
+            }
+        }
+        Controller::redirect(BASE_URL . 'dataKasWarga/edit/' . $id);
+    }
+    public function hapus()
+    {
+        $id = $_POST['id'];
+        $query = $this->connect->query("DELETE FROM `kas` WHERE `kas`.`id` = '$id'");
+        if ($query) {
+            Flash::setFlash('Data kas berhasil dihapus', 'success');
+        } else {
+            Flash::setFlash('Data kas gagal dihapus', 'danger');
+        }
+        Controller::redirect(BASE_URL . 'dataKasWarga');
     }
 }

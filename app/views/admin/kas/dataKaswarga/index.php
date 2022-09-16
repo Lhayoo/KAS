@@ -3,9 +3,14 @@
         <h5 class="card-header">Table Kas</h5>
         <a href="<?= BASE_URL . 'dataKasWarga/tambah' ?>" class="btn btn-small btn-outline-primary ">Tambah Data</a>
     </div>
+    <?php
+
+    use App\Core\Flash;
+
+    Flash::getFlash()
+    ?>
     <div class="table-responsive text-nowrap text-center">
         <table class="table">
-
             <thead>
                 <tr>
                     <th>No</th>
@@ -39,7 +44,7 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= BASE_URL . 'users/edit' ?>"><i
+                                <a class="dropdown-item" href="<?= BASE_URL ?>dataKasWarga/edit/<?= $kas['id'] ?>"><i
                                         class="bx bx-edit-alt me-2"></i>
                                     Edit</a>
                                 <button class="dropdown-item" type="button" data-bs-toggle="modal"
@@ -60,12 +65,12 @@
 <?php foreach ($data['kas'] as $kas) : ?>
 <div class="modal modal-top fade" id="hapus<?= $kas['id'] ?>" tabindex="-1">
     <div class="modal-dialog">
-        <form class="modal-content" action="<?= BASE_URL ?>dataKasWarga/hapus" method="post">
+        <form class="modal-content" action="<?= BASE_URL ?>dataKasWarga/hapus" method="POST">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-                <input type="hidden" name="nik" value="<?= $kas['id'] ?>">
+                <input type="hidden" name="id" value="<?= $kas['id'] ?>">
                 <h3 class="modal-title text-center">Yakin ingin melakukan aksi ini?</h4>
                     <div class="modal-footer mt-2">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">

@@ -72,12 +72,13 @@
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
                             <select class="form-select" id="status" aria-label="Default select example" name="status">
-                                <option value="Belum Menikah" <?php if ($data['id']['status'] == 'Belum Menikah') {
-                                                                    echo 'selected';
-                                                                } ?>>Belum Menikah</option>
-                                <option value="Menikah" <?php if ($data['id']['status'] == 'Menikah') {
-                                                            echo 'selected';
+                                <option value="Benikah" <?php if ($data['id']['status'] == 'Menikah') {
+                                                            echo "selected";
                                                         } ?>>Menikah</option>
+                                <option value="Belum menikah" <?php if ($data['id']['status'] == 'Belum menikah') {
+                                                                    echo "selected";
+                                                                } ?>>Belum menikah</option>
+
                             </select>
                         </div>
                     </div>

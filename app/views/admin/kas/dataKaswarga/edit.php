@@ -8,27 +8,35 @@
 
                 Flash::getFlash() ?>
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <select class="form-select" name="id">
-                                <option selected>Pilih Nama</option>
-                                <?php foreach ($data['kas'] as $info) : ?>
-                                <option value="<?= $info['id'] ?>"><?= $info['nama'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <input type="hidden" class="form-control" id="id" aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2" name="id" readonly
+                                value="<?= $data['kas']['id'] ?>" />
                         </div>
                     </div>
                 </div>
-                <!-- <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tanggal</label>
-                    <div clasSs="col-sm-10">
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="nama">Nama</label>
+                    <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <input type="date" class="form-control" id="basic-icon-default-fullname"
-                                aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="tanggal" />
+                            <input type="text" class="form-control" id="nama" aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2" name="id" readonly
+                                value="<?= $data['kas']['users_id'] ?>" />
                         </div>
                     </div>
-                </div> -->
+                </div>
+
+                <!-- <div class=" row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tanggal</label>
+                            <div clasSs="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                    <input type="date" class="form-control" id="basic-icon-default-fullname"
+                                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2"
+                                        name="tanggal" />
+                                </div>
+                            </div>
+                        </div> -->
                 <!-- <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Jumlah</label>
                     <div class="col-sm-10">
@@ -45,11 +53,13 @@
                     <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Status</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <select class="form-select" id="exampleFormControlSelect1"
-                                aria-label="Default select example" name="status">
-                                <option selected>Pilih status</option>
-                                <option value="bayar">Bayar</option>
-                                <option value="belum">Belum Bayar</option>
+                            <select class="form-select" name="status" id="basicSelect">
+                                <option value="bayar" <?php if ($data['kas']['status'] == 'bayar') {
+                                                            echo "selected";
+                                                        } ?>>Bayar</option>
+                                <option value="belum" <?php if ($data['kas']['status'] == 'belum') {
+                                                            echo "selected";
+                                                        } ?>>Belum bayar</option>
                             </select>
                         </div>
                     </div>

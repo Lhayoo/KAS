@@ -23,12 +23,31 @@ class dataKasWarga extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['active']  = 'dataKasWarga';
             $data['title']  = 'Tambah Kas';
-            $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
+            $data['kas'] = $this->model('dataKasWargaModel')->getUser();
             $data['info'] = $this->model('dataInfoModel')->getInfo();
             $this->view('admin/kas/dataKasWarga/tambah', $data, 'default');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             return $this->model('dataKasWargaModel')->tambah($_POST);
+        }
+    }
+    public function hapus()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('dataKasWargaModel')->hapus($_POST);
+        }
+    }
+    public function edit($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $data['active']  = 'dataKasWarga';
+            $data['title']  = 'Edit Kas';
+            $data['kas'] = $this->model('dataKasWargaModel')->getKasById($id);
+            $data['info'] = $this->model('dataInfoModel')->getInfo();
+            $this->view('admin/kas/dataKasWarga/edit', $data, 'default');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('dataKasWargaModel')->edit($_POST);
         }
     }
 }

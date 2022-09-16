@@ -24,6 +24,7 @@ class dataWarga extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['active']  = 'dataWarga';
             $data['title']  = 'Tambah Warga';
+            $data['info'] = $this->model('dataInfoModel')->getInfo();
             $this->view('admin/warga/tambah', $data, 'default');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -42,6 +43,7 @@ class dataWarga extends Controller
             $data['active']  = 'dataWarga';
             $data['title']  = 'Edit Warga';
             $data['id'] = $this->model('dataWargaModel')->getWargaById($id);
+            $data['info'] = $this->model('dataInfoModel')->getInfo();
             $this->view('admin/warga/edit', $data, 'default');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
