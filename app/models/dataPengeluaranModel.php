@@ -28,10 +28,16 @@ class dataPengeluaranModel extends Database
         }
         Controller::redirect(BASE_URL . 'dataPengeluaran/tambah');
     }
-    public function hapus($id)
+    public function hapus()
     {
+        $id = htmlspecialchars($_POST['id']);
         $query = $this->connect->query("DELETE FROM pengeluaran WHERE id='$id'");
-        return $query;
+        if ($query) {
+            Flash::setFlash('Data berhasil dihapus', 'success');
+        } else {
+            Flash::setFlash('Data gagal dihapus', 'danger');
+        }
+        Controller::redirect(BASE_URL . 'dataPemasukan');
     }
     public function getKasById($id)
     {
