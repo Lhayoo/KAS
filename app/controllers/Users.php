@@ -39,7 +39,7 @@ class users extends Controller
             $this->view('admin/users/edit', $data, 'default');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            return $this->model('usersModel')->edit($_POST);
+            return $this->model('usersModel')->edit($_POST, $id);
         }
     }
     public function hapus()

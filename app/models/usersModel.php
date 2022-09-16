@@ -53,9 +53,8 @@ class usersModel extends Database
             Controller::redirect(BASE_URL . 'users');
         }
     }
-    public function edit($post)
+    public function edit($post, $id)
     {
-        $id = htmlspecialchars($post['id']);
         $nik = htmlspecialchars($post['nik']);
         $username = htmlspecialchars($post['username']);
         $password = htmlspecialchars($post['password']);
@@ -70,15 +69,17 @@ class usersModel extends Database
             Flash::setFlash('danger', 'Username sudah terdaftar');
         } elseif ($password != $retype) {
             Flash::setFlash('Password tidak sama', 'danger');
+            Controller::redirect(BASE_URL . 'users/edit/' . $id);
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
             $query = $this->connect->query("UPDATE `users` SET `NIK` = '$nik', `username` = '$username', `password` = '$password' WHERE `users`.`id` = '$id'");
             if ($query) {
                 Flash::setFlash('Data berhasil ditambahkan', 'success');
+                Controller::redirect(BASE_URL . 'users');
             } else {
                 Flash::setFlash('Data gagal ditambahkan', 'danger');
+                Controller::redirect(BASE_URL . 'users/edit/' . $id);
             }
         }
-        Controller::redirect(BASE_URL . 'users/edit?id=' . $id);
     }
 }
