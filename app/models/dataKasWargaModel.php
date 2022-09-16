@@ -41,7 +41,7 @@ class dataKasWargaModel extends Database
     }
     public function getKasById($id)
     {
-        $query = $this->connect->query("SELECT * FROM kas WHERE id = '$id'")->fetch_assoc();
+        $query = $this->connect->query("SELECT `kas`.`users_id`,`kas`.`id`,`warga`.`nama`,`kas`.`status` FROM kas,warga,users WHERE `kas`.`id` = '$id' AND `kas`.`users_id`=`users`.`id` AND `users`.`NIK`=`warga`.`NIK`")->fetch_assoc();
         return $query;
     }
     public function edit($post)
@@ -51,14 +51,15 @@ class dataKasWargaModel extends Database
         if (empty($id) || empty($status)) {
             Flash::setFlash('Data wajin diisi lengkap', 'danger');
         } else {
-            $query = $this->connect->query("UPDATE `kas` SET `status` = '$status' WHERE id = '$id';");
+            $query = $this->connect->query("UPDATE `kas` SET `status` = '$status' WHERE `kas`.`id` = '$id';");
             if ($query) {
                 Flash::setFlash('Data kas berhasil diubah', 'success');
+                Controller::redirect(BASE_URL . 'dataKasWarga');
             } else {
                 Flash::setFlash('Data kas gagal diubah', 'danger');
+                Controller::redirect(BASE_URL . 'dataKasWarga/edit/' . $id);
             }
         }
-        Controller::redirect(BASE_URL . 'dataKasWarga/edit/' . $id);
     }
     public function hapus()
     {

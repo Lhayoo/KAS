@@ -11,7 +11,7 @@
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
                             <input type="hidden" class="form-control" id="id" aria-label="John Doe"
-                                aria-describedby="basic-icon-default-fullname2" name="id" readonly
+                                aria-describedby="basic-icon-default-fullname2" name="id"
                                 value="<?= $data['kas']['id'] ?>" />
                         </div>
                     </div>
@@ -21,8 +21,8 @@
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
                             <input type="text" class="form-control" id="nama" aria-label="John Doe"
-                                aria-describedby="basic-icon-default-fullname2" name="id" readonly
-                                value="<?= $data['kas']['users_id'] ?>" />
+                                aria-describedby="basic-icon-default-fullname2" name="nama" readonly
+                                value="<?= $data['kas']['nama'] ?>" />
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Status</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <select class="form-select" name="status" id="basicSelect">
+                            <select class="form-select" name="status" id="status">
                                 <option value="bayar" <?php if ($data['kas']['status'] == 'bayar') {
                                                             echo "selected";
                                                         } ?>>Bayar</option>
