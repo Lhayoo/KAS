@@ -27,7 +27,7 @@ class usersModel extends Database
             Flash::setFlash('Password tidak sama', 'danger');
         } else {
             // $password = password_hash($password, PASSWORD_DEFAULT);
-            $query = $this->connect->query("INSERT INTO `users` (`nik`, `username`, `password`,`role`) VALUES ('$nik', '$username', '$password', 'anggota')");
+            $query = $this->connect->query("INSERT INTO `users` (`nik`, `username`, `password`,`role`,`profile`) VALUES ('$nik', '$username', '$password', 'anggota','person.png')");
             if ($query) {
                 Flash::setFlash('Data berhasil ditambahkan', 'success');
             } else {

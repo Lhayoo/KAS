@@ -41,4 +41,39 @@ class AnggotaModel extends Database
         }
         Controller::redirect('accountSettings');
     }
+    public function edit($post)
+    {
+        $id = $_SESSION['user']['id'];
+        $nik = htmlspecialchars($post['nik']);
+        $no_telfon = htmlspecialchars($post['no_telfon']);
+        $profile = $_FILES['profile']['name'];
+        $tmp = $_FILES['profile']['tmp_name'];
+        $x = explode('.', $profile);
+        $ext = end($x);
+        if (empty($no_telfon)) {
+            Flash::setFlash('Data tidak boleh kosong', 'danger');
+            if (!in_array($ext, ['jpg', 'png', 'jpeg'])) {
+                Flash::setFlash('Invalid ekstensi , hanya jpg,jpeg,png', 'danger');
+            } else {
+                $query = $this->connect->query("UPDATE users SET `profile` = '$profile' WHERE `id` = '$id'");
+                if ($query) {
+                    if (!is_dir('assets/img/profile')) {
+                        mkdir('assets/img/profile');
+                    }
+                    if (is_dir('assets/img/profile')) {
+                        move_uploaded_file($tmp, 'assets/img/profile' . $profile);
+                    }
+                    Flash::setFlash('Berhasil mengubah profile', 'success');
+                }
+            }
+        } else {
+            $insert = $this->connect->query("UPDATE warga SET `no_telfon` = '$no_telfon' WHERE `NIK` = '$nik'");
+            if ($insert) {
+                Flash::setFlash('Berhasil mengubah profile', 'success');
+            } else {
+                Flash::setFlash('Gagal mengubah profile', 'danger');
+            }
+        }
+        Controller::redirect(BASE_URL . 'AccountSettings');
+    }
 }
