@@ -1,0 +1,18 @@
+<?php
+
+use App\Core\Database;
+
+class HomeModel extends Database
+{
+    public function getInfo()
+    {
+        $tgl1 = date('Y-m-1');
+        $tgl31 = date('Y-m-31');
+        $info = [];
+        $info['total_saldo'] = $this->connect->query("SELECT * FROM saldo")->fetch_assoc()['total'];
+        $info['total_kas'] = $this->connect->query("SELECT SUM(jumlah) AS total FROM kas")->fetch_assoc()['total'];
+        $info['total_pemasukan'] = $this->connect->query("SELECT SUM(jumlah) AS total FROM pemasukan WHERE tanggal BETWEEN '$tgl1' AND '$tgl31'")->fetch_assoc()['total'];
+        $info['total_pengeluaran'] = $this->connect->query("SELECT SUM(jumlah) AS total FROM pengeluaran WHERE tanggal BETWEEN '$tgl1' AND '$tgl31'")->fetch_assoc()['total'];
+        return $info;
+    }
+}
