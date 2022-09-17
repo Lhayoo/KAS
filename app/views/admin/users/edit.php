@@ -1,7 +1,7 @@
 <div class="col-xxl">
     <div class="card mb-4">
         <div class="card-body">
-            <form action="POST">
+            <form method="POST">
                 <div class="row mb-3">
                     <?php
 
@@ -46,7 +46,7 @@
                     <label class="col-sm-2 col-form-label" for="password">retype new password</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <input type="password" id="password" class="form-control" name="password"
+                            <input type="password" id="password" class="form-control" name="retype"
                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                 aria-describedby="password" />
                             <span id="password" class="input-group-text cursor-pointer"><i

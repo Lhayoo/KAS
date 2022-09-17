@@ -24,18 +24,19 @@ class AnggotaModel extends Database
         $oldPas = $_POST['oldPas'];
         $newPas = $_POST['newPas'];
         $retype = $_POST['retype'];
+        $query = $this->connect->query("SELECT * FROM users WHERE id = '$id'")->fetch_assoc();
         if (empty($oldPas) || empty($newPas) || empty($retype)) {
-            Flash::setFlash('danger', 'Password tidak boleh kosong');
-            $checkpass = $this->connect->query("SELECT `password` FROM user WHERE id = '$id'")->fetch_assoc();
-            if ($checkpass['password'] != $oldPas) {
-                Flash::setFlash('danger', 'Password lama salah');
-            } elseif ($newPas != $retype) {
-                Flash::setFlash('danger', 'Password baru tidak sama');
-            } elseif ($newPas == $checkpass['password']) {
-                Flash::setFlash('danger', 'Password baru tidak boleh sama dengan password lama');
+            Flash::setFlash('Data tidak boleh kosong', 'danger');
+        } elseif ($newPas != $retype) {
+            Flash::setFlash('Password baru tidak sama', 'danger');
+        } elseif ($query['password'] != $oldPas) {
+            Flash::setFlash('Password lama salah', 'danger');
+        } else {
+            $query = $this->connect->query("UPDATE users SET password = '$newPas' WHERE id = '$id'");
+            if ($query) {
+                Flash::setFlash('Password berhasil diubah', 'success');
             } else {
-                $this->connect->query("UPDATE user SET `password` = '$newPas' WHERE id = '$id'");
-                Flash::setFlash('success', 'Password berhasil diubah');
+                Flash::setFlash('Password gagal diubah', 'danger');
             }
         }
         Controller::redirect('accountSettings');

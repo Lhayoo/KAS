@@ -8,6 +8,7 @@ class authModel extends Database
 {
     public function login($post)
     {
+        date_default_timezone_set("Asia/Jakarta");
         $username = htmlspecialchars($post['username']);
         $password = htmlspecialchars($post['password']);
         $login = $this->connect->query("SELECT * from users where username='$username' and password='$password' limit 1");

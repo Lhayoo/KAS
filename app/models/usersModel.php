@@ -61,25 +61,21 @@ class usersModel extends Database
         $retype = htmlspecialchars($post['retype']);
         if (empty($nik) || empty($username) || empty($password) || empty($retype)) {
             Flash::setFlash('Data tidak boleh kosong', 'danger');
-        } elseif ($this->connect->query("SELECT * FROM warga WHERE NIK = '$nik'")->num_rows > 0) {
-            Flash::setFlash('NIK sudah terdaftar', 'danger');
-        } elseif ($this->connect->query("SELECT * FROM users WHERE nik = '$nik'")->num_rows < 0) {
+        } elseif ($this->connect->query("SELECT * FROM warga WHERE NIK = '$nik'")->num_rows == 0) {
             Flash::setFlash('NIK tidak terdaftar', 'danger');
-        } elseif ($this->connect->query("SELECT * FROM users WHERE username = '$username'")->num_rows > 0) {
-            Flash::setFlash('danger', 'Username sudah terdaftar');
         } elseif ($password != $retype) {
             Flash::setFlash('Password tidak sama', 'danger');
-            Controller::redirect(BASE_URL . 'users/edit/' . $id);
         } else {
-            $password = password_hash($password, PASSWORD_DEFAULT);
+            // $password = password_hash($password, PASSWORD_DEFAULT);
             $query = $this->connect->query("UPDATE `users` SET `NIK` = '$nik', `username` = '$username', `password` = '$password' WHERE `users`.`id` = '$id'");
             if ($query) {
-                Flash::setFlash('Data berhasil ditambahkan', 'success');
+                Flash::setFlash('Data berhasil diubah', 'success');
                 Controller::redirect(BASE_URL . 'users');
             } else {
-                Flash::setFlash('Data gagal ditambahkan', 'danger');
+                Flash::setFlash('Data gagal diubah', 'danger');
                 Controller::redirect(BASE_URL . 'users/edit/' . $id);
             }
         }
+        Controller::redirect(BASE_URL . 'users/edit/' . $id);
     }
 }
