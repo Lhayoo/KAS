@@ -27,6 +27,10 @@
     <div class="card">
         <div class="d-flex align-items-center justify-content-between px-3 ">
             <h5 class="card-header">Table Kas</h5>
+            <div class="d-flex align-items-center border-5">
+                <i class="bx bx-search fs-4 lh-0"></i>
+                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+            </div>
             <a href="<?= BASE_URL . 'dataKasWarga/tambah' ?>" class="btn btn-small btn-outline-primary ">Tambah Data</a>
         </div>
         <?php
@@ -36,7 +40,7 @@
         Flash::getFlash()
         ?>
         <div class="table-responsive text-nowrap text-center">
-            <table class="table">
+            <table class="table display" id="dataKasWarga">
                 <thead>
                     <tr>
                         <th>No</th>

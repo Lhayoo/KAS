@@ -29,10 +29,17 @@
 
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/libs/apex-charts/apex-charts.css" />
 
-    <!-- Page CSS -->
-
+    <!-- dataTables -->
+    <link rel="stylesheet" type="text/css" href="DataTables-1.12.1/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" type="text/css" href="Buttons-2.2.3/css/buttons.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <!-- Helpers -->
     <script src="<?= BASE_URL ?>assets/vendor/js/helpers.js"></script>
+
+    <!-- JQuery js -->
+    <script src="<?= BASE_URL ?>assets/js/jQuery.min.js"></script>
+
+
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -124,7 +131,28 @@
     </div>
     <!-- / Layout wrapper -->
 
+    <!-- dataTables -->
+    <script src="<?= BASE_URL ?>assets/DataTables/DataTables-1.12.1/css/jquery.dataTables.min.css"></script>
+    <script src="<?= BASE_URL ?>assets/DataTables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataKasWarga').DataTable();
+        });
+    </script>
+    <!-- bundledataTables -->
+
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/JSZip-2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/Buttons-2.2.3/js/buttons.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>assets/DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
     <!-- Core JS -->
+
     <!-- build:js assets/vendor/js/core.js -->
     <script src="<?= BASE_URL ?>assets/vendor/libs/jquery/jquery.js"></script>
     <script src="<?= BASE_URL ?>assets/vendor/libs/popper/popper.js"></script>
