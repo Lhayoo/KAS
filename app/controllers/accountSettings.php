@@ -15,6 +15,15 @@ class accountSettings extends Controller
         $data['active'] = 'accountSettings';
         $data['title'] = 'Account Settings';
         $data['info'] = $this->model('dataInfoModel')->getInfo();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('AnggotaModel')->changePas($_POST);
+        }
         $this->view('accountSettings/index', $data, 'default');
+    }
+    public function changePas()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('AnggotaModel')->changePas($_POST);
+        }
     }
 }
