@@ -38,7 +38,7 @@ class dataPengeluaranModel extends Database
         } else {
             Flash::setFlash('Data gagal dihapus', 'danger');
         }
-        Controller::redirect(BASE_URL . 'dataPemasukan');
+        Controller::redirect(BASE_URL . 'dataPengeluaran');
     }
     public function getKasById($id)
     {

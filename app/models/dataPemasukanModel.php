@@ -28,7 +28,7 @@ class dataPemasukanModel extends Database
         } else {
             Flash::setFlash('Data gagal dihapus', 'danger');
         }
-        Controller::redirect(BASE_URL . 'dataPengeluaran');
+        Controller::redirect(BASE_URL . 'dataPemasukan');
     }
     public function getKasById($id)
     {
@@ -43,7 +43,7 @@ class dataPemasukanModel extends Database
         if (empty($tanggal) || empty($jumlah) || empty($keterangan)) {
             Flash::setFlash('Data tidak boleh kosong', 'danger');
         } else {
-            $query = $this->connect->query("INSERT INTO pemasukan (`saldo_id`,`tanggal`,`jumlah`,`keterangan`)VALUES ('1','$tanggal','$jumlah','$keterangan')");
+            $query = $this->connect->query("INSERT INTO pemasukan (`saldo_id`,`tanggal`,`keterangan`,`jumlah`)VALUES ('1','$tanggal','$jumlah','$keterangan')");
             if ($query) {
                 Flash::setFlash('Data berhasil ditambahkan', 'success');
             } else {
