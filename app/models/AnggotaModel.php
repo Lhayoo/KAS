@@ -39,7 +39,7 @@ class AnggotaModel extends Database
                 Flash::setFlash('Password gagal diubah', 'danger');
             }
         }
-        Controller::redirect('accountSettings');
+        Controller::redirect('accountSettings/changePas');
     }
     public function edit($post)
     {
@@ -50,30 +50,38 @@ class AnggotaModel extends Database
         $tmp = $_FILES['profile']['tmp_name'];
         $x = explode('.', $profile);
         $ext = end($x);
-        if (empty($no_telfon)) {
-            Flash::setFlash('Data tidak boleh kosong', 'danger');
-            if (!in_array($ext, ['jpg', 'png', 'jpeg'])) {
-                Flash::setFlash('Invalid ekstensi , hanya jpg,jpeg,png', 'danger');
+        if (!empty($profile) && !empty($no_telfon)) {
+            if ($_FILES['profile']['name'] != '') {
+                if (!in_array($ext, ['jpg', 'png', 'jpeg'])) {
+                    Flash::setFlash('Ekstensi , hanya jpg,jpeg,png', 'danger');
+                    Controller::redirect(BASE_URL . 'AccoutSettings');
+                } else {
+                    $old_cover = $this->connect->query("SELECT * FROM users WHERE id = '$id'")->fetch_assoc()['profile'];
+                    if (file_exists('assets/img/profile' . $old_cover)) {
+                        unlink('assets/img/profile' . $old_cover);
+                    }
+                    $update = $this->connect->query("UPDATE users SET `profile` = '$profile' WHERE `id` = '$id'");
+                    if ($update) {
+                        if (!is_dir('assets/img/profile')) {
+                            mkdir('assets/img/profile');
+                        }
+                        if (is_dir('assets/cover')) {
+                            move_uploaded_file($tmp, 'assets/img/profile' . $profile);
+                        }
+                        Flash::setFlash('Berhasil Mengedit profile', 'success');
+                        Controller::redirect(BASE_URL . 'accountSettings');
+                    }
+                }
             } else {
-                $query = $this->connect->query("UPDATE users SET `profile` = '$profile' WHERE `id` = '$id'");
-                if ($query) {
-                    if (!is_dir('assets/img/profile')) {
-                        mkdir('assets/img/profile');
-                    }
-                    if (is_dir('assets/img/profile')) {
-                        move_uploaded_file($tmp, 'assets/img/profile' . $profile);
-                    }
-                    Flash::setFlash('Berhasil mengubah profile', 'success');
+                $update = $this->connect->query("UPDATE warga SET `no_telfon` = '$no_telfon' WHERE `NIK` = '$nik'");
+                if ($update) {
+                    Flash::setFlash('Berhasil Mengedit No Telfon', 'success');
+                    Controller::redirect(BASE_URL . 'accountSettings');
                 }
             }
         } else {
-            $insert = $this->connect->query("UPDATE warga SET `no_telfon` = '$no_telfon' WHERE `NIK` = '$nik'");
-            if ($insert) {
-                Flash::setFlash('Berhasil mengubah profile', 'success');
-            } else {
-                Flash::setFlash('Gagal mengubah profile', 'danger');
-            }
+            Flash::setFlash('Invalid input value', 'danger');
+            Controller::redirect(BASE_URL . 'accountSettings');
         }
-        Controller::redirect(BASE_URL . 'AccountSettings');
     }
 }

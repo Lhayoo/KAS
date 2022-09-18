@@ -28,20 +28,11 @@ class dataPemasukanModel extends Database
         } else {
             Flash::setFlash('Data gagal dihapus', 'danger');
         }
-        Controller::redirect(BASE_URL . 'dataPemasukan');
+        Controller::redirect(BASE_URL . 'dataPengeluaran');
     }
     public function getKasById($id)
     {
         $query = $this->connect->query("SELECT * FROM pemasukan WHERE id='$id'");
-        return $query;
-    }
-    public function edit($data)
-    {
-        $id = $data['id'];
-        $tanggal = $data['tanggal'];
-        $jumlah = $data['jumlah'];
-        $keterangan = $data['keterangan'];
-        $query = $this->connect->query("UPDATE pemasukan SET tanggal='$tanggal',jumlah='$jumlah',keterangan='$keterangan' WHERE id='$id'");
         return $query;
     }
     public function tambah($post)
@@ -52,7 +43,7 @@ class dataPemasukanModel extends Database
         if (empty($tanggal) || empty($jumlah) || empty($keterangan)) {
             Flash::setFlash('Data tidak boleh kosong', 'danger');
         } else {
-            $query = $this->connect->query("INSERT INTO pemasukan (`tanggal`,`jumlah`,`keterangan`)VALUES ('$tanggal','$jumlah','$keterangan')");
+            $query = $this->connect->query("INSERT INTO pemasukan (`saldo_id`,`tanggal`,`jumlah`,`keterangan`)VALUES ('1','$tanggal','$jumlah','$keterangan')");
             if ($query) {
                 Flash::setFlash('Data berhasil ditambahkan', 'success');
             } else {

@@ -62,22 +62,10 @@
                         <td><?= $pemasukan['keterangan'] ?></td>
                         <td><?= $pemasukan['jumlah'] ?></td>
                         <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item"
-                                        href="<?= BASE_URL ?>dataPemasukan/edit/<?= $pemasuakan['id'] ?>"><i
-                                            class="bx bx-edit-alt me-2"></i>
-                                        Edit</a>
-                                    <button class="dropdown-item" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#hapus<?= $pemasukan['id'] ?>">
-                                        <i class="bx bx-trash me-2"></i>Hapus
-                                    </button>
-                                </div>
-                            </div>
+                            <button class="btn" type="button" data-bs-toggle="modal"
+                                data-bs-target="#hapus<?= $pemasukan['id'] ?>">
+                                <i class="bx bx-trash me-2"></i>Hapus
+                            </button>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -95,7 +83,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
-                    <input type="text" name="id" value="<?= $pemasukan['id'] ?>">
+                    <input type="hidden" name="id" value="<?= $pemasukan['id'] ?>">
                     <h3 class="modal-title text-center">Yakin ingin melakukan aksi ini?</h4>
                         <div class="modal-footer mt-2">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
