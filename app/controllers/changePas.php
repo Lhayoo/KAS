@@ -1,9 +1,9 @@
 <?php
 
-use App\Core\Controller;
 use App\Core\Middleware;
+use App\Core\Controller;
 
-class accountSettings extends Controller
+class changePas extends Controller
 {
     public function __construct()
     {
@@ -14,9 +14,8 @@ class accountSettings extends Controller
         $data['active'] = 'accountSettings';
         $data['title'] = 'Account Settings';
         $data['info'] = $this->model('dataInfoModel')->getInfo();
-        $data['data'] = $this->model('dataInfoModel')->getInfo()->fetch_assoc();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            return $this->model('accoutSettingsModel')->edit($_POST);
+            return $this->model('accoutSettingsModel')->changePas($_POST);
         }
         $this->view('accountSettings/index', $data, 'default');
     }
