@@ -11,14 +11,6 @@ class dataPemasukanModel extends Database
         $query = $this->connect->query("SELECT * FROM pemasukan");
         return $query;
     }
-    public function tambahData($data)
-    {
-        $tanggal = $data['tanggal'];
-        $jumlah = $data['jumlah'];
-        $keterangan = $data['keterangan'];
-        $query = $this->connect->query("INSERT INTO pemasukan VALUES ('','$tanggal','$jumlah','$keterangan')");
-        return $query;
-    }
     public function hapus()
     {
         $id = htmlspecialchars($_POST['id']);
@@ -43,7 +35,7 @@ class dataPemasukanModel extends Database
         if (empty($tanggal) || empty($jumlah) || empty($keterangan)) {
             Flash::setFlash('Data tidak boleh kosong', 'danger');
         } else {
-            $query = $this->connect->query("INSERT INTO pemasukan (`saldo_id`,`tanggal`,`keterangan`,`jumlah`)VALUES ('1','$tanggal','$jumlah','$keterangan')");
+            $query = $this->connect->query("INSERT INTO pemasukan (`saldo_id`,`tanggal`,`jumlah`,`keterangan`)VALUES ('1','$tanggal','$jumlah','$keterangan')");
             if ($query) {
                 Flash::setFlash('Data berhasil ditambahkan', 'success');
             } else {

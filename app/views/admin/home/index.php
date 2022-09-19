@@ -137,16 +137,65 @@
             </div>
         </div>
     </div>
-
-
-    <div class="row mt-4 ">
-        <div class="col-lg-12 mx-auto col-md-6 mt-4 mb-4 dekstop">
+    <!-- data kas yang belum bayar -->
+    <div class="row ">
+        <div class="col-lg-12 mx-auto col-md-6  mb-4 ">
             <div class="card z-index-2 card-inverse">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                         <div class="chart">
                             <div class="row row-bordered g-0 ">
-                                <div class="col-lg-12 dekstop">
+                                <div class="col-lg-12">
+                                    <h5 class="card-header m-0 me-2 pb-3">Data kas warga yang belum dibayar
+                                    </h5>
+                                    <div class="table-responsive text-nowrap text-center">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Tanngal</th>
+                                                    <th> Nama</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-border-bottom-0">
+                                                <tr>
+                                                    <?php
+                                                    $no = 1;
+                                                    foreach ($data['data']['kas'] as $kas) :
+                                                    ?>
+                                                    <td><?= $no++ ?></td>
+                                                    <td><?= $kas['tanggal'] ?></td>
+                                                    <td><?= $kas['nama'] ?></td>
+                                                    <td><?= $kas['jumlah'] ?></td>
+                                                    <td>
+                                                        <span class="badge bg-danger">belum bayar</span>
+                                                    </td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end kas-->
+
+    <!-- data pemasukan dan data pengeluaran bulan ini -->
+    <div class="row ">
+        <div class="col-lg-12 mx-auto col-md-6 mb-4">
+            <div class="card z-index-2 card-inverse">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                        <div class="chart">
+                            <div class="row row-bordered g-0 ">
+                                <div class="col-lg-12">
                                     <h5 class="card-header m-0 me-2 pb-3">Data pemasukan & pengeluaran dalam sebulan
                                     </h5>
                                     <div class="table-responsive text-nowrap text-center">
@@ -198,3 +247,5 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!-- end data pemasukan & pengeluran -->

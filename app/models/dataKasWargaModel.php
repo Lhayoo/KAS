@@ -72,4 +72,15 @@ class dataKasWargaModel extends Database
         }
         Controller::redirect(BASE_URL . 'dataKasWarga');
     }
+    public function filterData($post)
+    {
+        $data = [];
+        $awal = htmlspecialchars($post['awal']);
+        $akhir = htmlspecialchars($post['akhir']);
+        $query = $this->connect->query("SELECT * FROM kas WHERE tanggal BETWEEN '$awal' AND '$akhir'");
+        while ($row = $query->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
 }

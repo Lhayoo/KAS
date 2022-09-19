@@ -8,7 +8,6 @@
     <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
-            <!-- input group 2 tanggal -->
             <div class="row mb-3">
                 <div class="col">
                     <label for="dari" class="m-2">Dari tanggal</label>

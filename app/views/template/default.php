@@ -94,7 +94,7 @@
                 </div>
                 <!-- End content -->
                 <!-- Footer -->
-                <footer class="content-footer footer bg-footer-theme r">
+                <footer class="content-footer footer bg-footer-theme mt-3">
                     <div class="container-xxl d-flex flex-wrap justify-content-center py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
                             ©
@@ -107,7 +107,7 @@
                                 Alam</a>
                         </div>
                     </div>
-                </footer> -->
+                </footer>
                 <!-- end footer -->
 
                 <div class="content-backdrop fade"></div>

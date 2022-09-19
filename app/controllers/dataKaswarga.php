@@ -16,6 +16,9 @@ class dataKasWarga extends Controller
         $data['title'] = 'Data Kas';
         $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
         $data['info'] = $this->model('dataInfoModel')->getInfo();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $this->model('dataKasWargaModel')->filterData($_POST);
+        }
         $this->view('admin/kas/dataKasWarga/index', $data, 'default');
     }
     public function tambah()
