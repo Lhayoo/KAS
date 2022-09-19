@@ -137,3 +137,64 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row mt-4 ">
+        <div class="col-lg-12 mx-auto col-md-6 mt-4 mb-4 dekstop">
+            <div class="card z-index-2 card-inverse">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                        <div class="chart">
+                            <div class="row row-bordered g-0 ">
+                                <div class="col-lg-12 dekstop">
+                                    <h5 class="card-header m-0 me-2 pb-3">Data pemasukan & pengeluaran dalam sebulan
+                                    </h5>
+                                    <div class="table-responsive text-nowrap text-center">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Tanngal</th>
+                                                    <th> Keterangan</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-border-bottom-0">
+                                                <tr>
+                                                    <?php
+                                                    $no = 1;
+                                                    foreach ($data['data']['pemasukan'] as $info) :
+                                                    ?>
+                                                    <td><?= $no++ ?></td>
+                                                    <td><?= $info['tanggal'] ?></td>
+                                                    <td><?= $info['keterangan'] ?></td>
+                                                    <td><?= $info['jumlah'] ?></td>
+                                                    <td>
+                                                        <span class="badge bg-success">Pemasukan</span>
+                                                    </td>
+                                                </tr>
+                                                <?php endforeach; ?>
+
+                                                <?php
+                                            foreach ($data['data']['pengeluaran'] as $info) :
+                                            ?>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $info['tanggal'] ?></td>
+                                                <td><?= $info['keterangan'] ?></td>
+                                                <td><?= $info['jumlah'] ?></td>
+                                                <td>
+                                                    <span class="badge bg-danger">Pengeluaran</span>
+                                                </td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
