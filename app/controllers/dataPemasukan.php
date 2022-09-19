@@ -23,6 +23,7 @@ class dataPemasukan extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['active']  = 'dataPemasukan';
             $data['title']  = 'Tambah users';
+            $data['info'] = $this->model('dataInfoModel')->getInfo();
             $this->view('admin/kas/dataPemasukan/tambah', $data, 'default');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

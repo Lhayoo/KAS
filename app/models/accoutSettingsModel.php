@@ -38,22 +38,23 @@ class accoutSettingsModel extends Database
         $tmp = $_FILES['profile']['tmp_name'];
         $x = explode('.', $profile);
         $ext = end($x);
-        if (!empty($profile) && !empty($no_telfon)) {
+        $old_profile = $this->connect->query("SELECT `profile` FROM `users` WHERE `users`.`id` = '$id'")->fetch_assoc()['profile'];
+        if (!empty($no_telfon)) {
             if ($_FILES['profile']['name'] != '') {
                 if (!in_array($ext, ['jpg', 'png', 'jpeg'])) {
                     Flash::setFlash('Ekstensi , hanya jpg,jpeg,png', 'danger');
                     Controller::redirect(BASE_URL . 'AccoutSettings');
-                } else {
-                    $old_profile = $this->connect->query("SELECT * FROM users WHERE id = '$id'")->fetch_assoc()['profile'];
+                } elseif ($profile == $old_profile) {
                     if (file_exists('assets/img/profile' . $old_profile)) {
                         unlink('assets/img/profile' . $old_profile);
                     }
-                    $update = $this->connect->query("UPDATE users SET `profile` = '$profile' WHERE `id` = '$id'");
+                } else {
+                    $update = $this->connect->query("UPDATE `users` SET `profile` = '$profile' WHERE `users`.`id` = '$id'");
                     if ($update) {
                         if (!is_dir('assets/img/profile')) {
                             mkdir('assets/img/profile');
                         }
-                        if (is_dir('assets/cover')) {
+                        if (is_dir('assets/img/profile')) {
                             move_uploaded_file($tmp, 'assets/img/profile' . $profile);
                         }
                         Flash::setFlash('Berhasil Mengedit profile', 'success');
@@ -63,7 +64,7 @@ class accoutSettingsModel extends Database
             } else {
                 $update = $this->connect->query("UPDATE warga SET `no_telfon` = '$no_telfon' WHERE `NIK` = '$nik'");
                 if ($update) {
-                    Flash::setFlash('Berhasil Mengedit No Telfon', 'success');
+                    Flash::setFlash('Berhasil Mengedit profile', 'success');
                     Controller::redirect(BASE_URL . 'accountSettings');
                 }
             }

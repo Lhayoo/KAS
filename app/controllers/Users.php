@@ -23,6 +23,7 @@ class users extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['active']  = 'users';
             $data['title']  = 'Tambah users';
+            $data['info'] = $this->model('dataInfoModel')->getInfo();
             $this->view('admin/users/tambah', $data, 'default');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

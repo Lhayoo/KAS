@@ -23,6 +23,7 @@ class dataPengeluaran extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['active']  = 'dataPemasukan';
             $data['title']  = 'Tambah users';
+            $data['info'] = $this->model('dataInfoModel')->getInfo();
             $this->view('admin/kas/datapengeluaran/tambah', $data, 'default');
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

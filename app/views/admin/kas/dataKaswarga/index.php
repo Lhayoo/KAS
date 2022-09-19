@@ -1,4 +1,4 @@
-<div class="card accordion-item mb-2 shadow-none">
+<div class="card accordion-item mb-2">
     <h2 class="accordion-header" id="headingTwo">
         <button type="button" class="btn-xl accordion-button collapsed" data-bs-toggle="collapse"
             data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="card shadow-none">
+    <div class="card">
         <div class="d-flex align-items-center justify-content-between px-3 ">
             <h5 class="card-header">Table Kas</h5>
             <div class="d-flex align-items-center border-5">
@@ -44,7 +44,7 @@
         Flash::getFlash()
         ?>
         <div class="table-responsive text-nowrap text-center">
-            <table class="table display" id="dataKasWarga">
+            <table class="table display" id="example">
                 <thead>
                     <tr>
                         <th>No</th>
