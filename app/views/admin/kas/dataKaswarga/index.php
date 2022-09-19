@@ -60,6 +60,11 @@
                     <tr>
                         <?php
                         $no = 1;
+                        if ($data['kas'] != null) {
+                            $data['kas'] = $data['kas'];
+                        } else {
+                            $data['filter'] = ['kas'];
+                        }
                         foreach ($data['kas'] as $kas) :
                         ?>
                         <td><?= $no++ ?></td>

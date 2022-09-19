@@ -74,13 +74,12 @@ class dataKasWargaModel extends Database
     }
     public function filterData($post)
     {
-        $data = [];
         $awal = htmlspecialchars($post['awal']);
         $akhir = htmlspecialchars($post['akhir']);
-        $query = $this->connect->query("SELECT * FROM kas WHERE tanggal BETWEEN '$awal' AND '$akhir'");
-        while ($row = $query->fetch_assoc()) {
-            $data[] = $row;
+        if ($awal && $akhir != '') {
+            $this->connect->query("SELECT * FROM kas DESC");
+        } else {
+            $this->connect->query("SELECT * FROM kas WHERE tanggal BETWEEN '$awal' AND '$akhir'");
         }
-        return $data;
     }
 }

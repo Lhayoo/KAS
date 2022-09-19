@@ -49,7 +49,7 @@ class accoutSettingsModel extends Database
                         unlink('assets/img/profile' . $old_profile);
                     }
                 } else {
-                    $update = $this->connect->query("UPDATE `users` SET `profile` = '$profile' WHERE `users`.`id` = '$id'");
+                    $update = $this->connect->query("UPDATE `users` SET `profile` = '$profile' WHERE `users`.`id` = '$id';");
                     if ($update) {
                         if (!is_dir('assets/img/profile')) {
                             mkdir('assets/img/profile');

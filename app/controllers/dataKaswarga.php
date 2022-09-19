@@ -14,8 +14,8 @@ class dataKasWarga extends Controller
     {
         $data['active'] = 'dataKasWarga';
         $data['title'] = 'Data Kas';
-        $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
         $data['info'] = $this->model('dataInfoModel')->getInfo();
+        $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             return $this->model('dataKasWargaModel')->filterData($_POST);
         }
