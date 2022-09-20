@@ -65,7 +65,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $kas['nama'] ?></td>
                         <td><?= $kas['tanggal'] ?></td>
-                        <td><?= $kas['jumlah'] ?></td>
+                        <td>Rp. <?= $kas['jumlah'] ?></td>
                         <td>
                             <?php if ($kas['status'] == 'bayar') : ?>
                             <span class="badge bg-label-success me-1"><?= $kas['status'] ?></span>

@@ -21,7 +21,7 @@
                     <td><?= $no++ ?></td>
                     <td><?= $pengeluaran['tanggal'] ?></td>
                     <td><?= $pengeluaran['keterangan'] ?></td>
-                    <td><?= $pengeluaran['jumlah'] ?></td>
+                    <td>Rp. <?= $pengeluaran['jumlah'] ?></td>
                 </tr>
                 <?php endwhile ?>
             </tbody>

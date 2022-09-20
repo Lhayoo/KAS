@@ -168,7 +168,7 @@
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $kas['tanggal'] ?></td>
                                                     <td><?= $kas['nama'] ?></td>
-                                                    <td><?= $kas['jumlah'] ?></td>
+                                                    <td>Rp. <?= $kas['jumlah'] ?></td>
                                                     <td>
                                                         <span class="badge bg-danger">belum bayar</span>
                                                     </td>
@@ -218,7 +218,7 @@
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $info['tanggal'] ?></td>
                                                     <td><?= $info['keterangan'] ?></td>
-                                                    <td><?= $info['jumlah'] ?></td>
+                                                    <td>Rp. <?= $info['jumlah'] ?></td>
                                                     <td>
                                                         <span class="badge bg-success">Pemasukan</span>
                                                     </td>

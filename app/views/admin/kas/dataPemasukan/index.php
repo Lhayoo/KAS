@@ -59,7 +59,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $pemasukan['tanggal'] ?></td>
                         <td><?= $pemasukan['keterangan'] ?></td>
-                        <td><?= $pemasukan['jumlah'] ?></td>
+                        <td>Rp. <?= $pemasukan['jumlah'] ?></td>
                         <td>
                             <button class="btn" type="button" data-bs-toggle="modal"
                                 data-bs-target="#hapus<?= $pemasukan['id'] ?>">
