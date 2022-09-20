@@ -12,17 +12,17 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label for="dari" class="m-2">Dari tanggal</label>
-                        <input type="date" class="form-control" name="awal" id="dari" aria-label="First name">
+                        <input type="date" class="form-control" name="awal" id="dari" aria-label="First name" required>
                     </div>
                     <div class="col">
                         <label for="sampai" class="m-2">Sampai tanggal</label>
                         <input type="date" name="akhir" id="sampai" class="form-control" placeholder=""
-                            aria-label="Last name">
+                            aria-label="Last name" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col text-center">
-                        <button type="submit" class="btn btn-primary">Cetak</button>
+                        <button type="submit" class="btn btn-primary" name="filter">Cetak</button>
                     </div>
                 </div>
             </form>
@@ -60,11 +60,6 @@
                     <tr>
                         <?php
                         $no = 1;
-                        if ($data['kas'] != null) {
-                            $data['kas'] = $data['kas'];
-                        } else {
-                            $data['filter'] = ['kas'];
-                        }
                         foreach ($data['kas'] as $kas) :
                         ?>
                         <td><?= $no++ ?></td>
@@ -104,7 +99,7 @@
     </div>
 
     <!-- Modal -->
-    <?php foreach ($data['kas'] as $kas) : ?>
+    <?php foreach ($data['infoKas'] as $kas) : ?>
     <div class="modal modal-top fade" id="hapus<?= $kas['id'] ?>" tabindex="-1">
         <div class="modal-dialog">
             <form class="modal-content" action="<?= BASE_URL ?>dataKasWarga/hapus" method="POST">

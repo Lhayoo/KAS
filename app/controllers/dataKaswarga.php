@@ -15,9 +15,11 @@ class dataKasWarga extends Controller
         $data['active'] = 'dataKasWarga';
         $data['title'] = 'Data Kas';
         $data['info'] = $this->model('dataInfoModel')->getInfo();
-        $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
+        $data['infoKas'] = $this->model('dataKasWargaModel')->getInfo();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            return $this->model('dataKasWargaModel')->filterData($_POST);
+            $data['kas'] = $this->model('dataKasWargaModel')->filter($_POST);
+        } else {
+            $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
         }
         $this->view('admin/kas/dataKasWarga/index', $data, 'default');
     }

@@ -5,6 +5,9 @@ use App\Core\Database;
 class HomeModel extends Database
 {
     public function getInfo()
+
+
+
     {
         $tgl1 = date('Y-m-1');
         $tgl31 = date('Y-m-31');
