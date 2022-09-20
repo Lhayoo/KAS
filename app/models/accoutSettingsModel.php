@@ -45,8 +45,8 @@ class accoutSettingsModel extends Database
                     Flash::setFlash('Ekstensi , hanya jpg,jpeg,png', 'danger');
                     Controller::redirect(BASE_URL . 'AccoutSettings');
                 } elseif ($profile == $old_profile) {
-                    if (file_exists('assets/img/profile' . $old_profile)) {
-                        unlink('assets/img/profile' . $old_profile);
+                    if (file_exists('assets/img/profile/' . $old_profile)) {
+                        unlink('assets/img/profile/' . $old_profile);
                     }
                 } else {
                     $update = $this->connect->query("UPDATE `users` SET `profile` = '$profile' WHERE `users`.`id` = '$id';");
@@ -55,7 +55,7 @@ class accoutSettingsModel extends Database
                             mkdir('assets/img/profile');
                         }
                         if (is_dir('assets/img/profile')) {
-                            move_uploaded_file($tmp, 'assets/img/profile' . $profile);
+                            move_uploaded_file($tmp, 'assets/img/profile/' . $profile);
                         }
                         Flash::setFlash('Berhasil Mengedit profile', 'success');
                         Controller::redirect(BASE_URL . 'accountSettings');

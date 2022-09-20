@@ -115,7 +115,6 @@
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Tanngal</th>
-                                                    <th> Nama</th>
                                                     <th>Jumlah</th>
                                                     <th>Status</th>
                                                 </tr>
@@ -128,7 +127,6 @@
                                                     ?>
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $kas['tanggal'] ?></td>
-                                                    <td><?= $kas['nama'] ?></td>
                                                     <td>Rp. <?= $kas['jumlah'] ?></td>
                                                     <td>
                                                         <span class="badge bg-danger">belum bayar</span>
