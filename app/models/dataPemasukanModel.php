@@ -8,7 +8,7 @@ class dataPemasukanModel extends Database
 {
     public function getInfo()
     {
-        $query = $this->connect->query("SELECT * FROM pemasukan");
+        $query = $this->connect->query("SELECT * FROM pemasukan ORDER BY tanggal DESC");
         return $query;
     }
     public function hapus()
@@ -43,5 +43,12 @@ class dataPemasukanModel extends Database
             }
         }
         Controller::redirect(BASE_URL . 'dataPemasukan/tambah');
+    }
+    public function filter($post)
+    {
+        $awal = $post['awal'];
+        $akhir = $post['akhir'];
+        $query = $this->connect->query("SELECT * FROM pemasukan WHERE tanggal BETWEEN '$awal' AND '$akhir' ORDER BY tanggal DESC");
+        return $query;
     }
 }

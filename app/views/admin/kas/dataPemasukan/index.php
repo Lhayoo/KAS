@@ -8,22 +8,25 @@
     <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="dari" class="m-2">Dari tanggal</label>
-                    <input type="date" class="form-control" name="awal" id="dari" aria-label="First name">
+            <form action="" method="post">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="dari" class="m-2">Dari tanggal</label>
+                        <input type="date" class="form-control" name="awal" id="dari" aria-label="First name">
+                    </div>
+                    <div class="col">
+                        <label for="sampai" class="m-2">Sampai tanggal</label>
+                        <input type="date" name="akhir" id="sampai" class="form-control" placeholder=""
+                            aria-label="Last name">
+                    </div>
                 </div>
-                <div class="col">
-                    <label for="sampai" class="m-2">Sampai tanggal</label>
-                    <input type="date" name="akhir" id="sampai" class="form-control" placeholder=""
-                        aria-label="Last name">
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-success">Filter</button>
+                        <button type="button" class="btn btn-primary">Cetak</button>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <button type="button" class="btn btn-primary">Cetak</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 

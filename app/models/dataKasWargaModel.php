@@ -8,7 +8,7 @@ class dataKasWargaModel extends Database
 {
     public function getInfo()
     {
-        $query = $this->connect->query("SELECT `kas`.`id`,`warga`.`nama`,`kas`.`tanggal`,`kas`.`jumlah`,`kas`.`status` FROM kas,warga,users WHERE kas.users_id=users.id AND users.NIK=warga.NIK ");
+        $query = $this->connect->query("SELECT `kas`.`id`,`warga`.`nama`,`kas`.`tanggal`,`kas`.`jumlah`,`kas`.`status` FROM kas,warga,users WHERE kas.users_id=users.id AND users.NIK=warga.NIK  ORDER BY `kas`.`tanggal` DESC");
         return $query;
     }
     public function tambah($post)
@@ -76,7 +76,7 @@ class dataKasWargaModel extends Database
     {
         $awal = $post['awal'];
         $akhir = $post['akhir'];
-        $query = $this->connect->query("SELECT * FROM kas WHERE tanggal BETWEEN '$awal' AND '$akhir' DESC");
+        $query = $this->connect->query("SELECT `kas`.`id`,`warga`.`nama`,`kas`.`tanggal`,`kas`.`jumlah`,`kas`.`status` FROM kas,warga,users WHERE kas.users_id=users.id AND users.NIK=warga.NIK AND kas.tanggal BETWEEN '$awal' AND '$akhir'");
         return $query;
     }
 }

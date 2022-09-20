@@ -14,8 +14,12 @@ class dataPengeluaran extends Controller
     {
         $data['active'] = 'dataPengeluaran';
         $data['title'] = 'Data pengeluaran';
-        $data['pengeluaran'] = $this->model('dataPengeluaranModel')->getInfo();
         $data['info'] = $this->model('dataInfoModel')->getInfo();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data['pengeluaran'] = $this->model('dataPengeluaranModel')->filter($_POST);
+        } else {
+            $data['pengeluaran'] = $this->model('dataPengeluaranModel')->getInfo();
+        }
         $this->view('admin/kas/dataPengeluaran/index', $data, 'default');
     }
     public function tambah()

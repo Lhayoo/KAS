@@ -8,7 +8,7 @@ class dataPengeluaranModel extends Database
 {
     public function getInfo()
     {
-        $query = $this->connect->query("SELECT * FROM pengeluaran");
+        $query = $this->connect->query("SELECT * FROM pengeluaran ORDER BY tanggal DESC");
         return $query;
     }
     public function tambah($post)
@@ -43,6 +43,13 @@ class dataPengeluaranModel extends Database
     public function getKasById($id)
     {
         $query = $this->connect->query("SELECT * FROM pengeluaran WHERE id='$id'");
+        return $query;
+    }
+    public function filter($post)
+    {
+        $awal = $post['awal'];
+        $akhir = $post['akhir'];
+        $query = $this->connect->query("SELECT * FROM pengeluaran WHERE tanggal BETWEEN '$awal' AND '$akhir' ORDER BY tanggal DESC");
         return $query;
     }
 }

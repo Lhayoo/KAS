@@ -22,6 +22,7 @@
                 </div>
                 <div class="row">
                     <div class="col text-center">
+                        <button type="submit" class="btn btn-success">Filter</button>
                         <button type="submit" class="btn btn-primary" name="filter">Cetak</button>
                     </div>
                 </div>
