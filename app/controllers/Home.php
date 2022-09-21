@@ -14,8 +14,14 @@ class Home extends Controller
     {
         $data['active'] = 'Dashboard';
         $data['title'] = 'home';
-        $data['data'] = $this->model('homeModel')->getInfo();
         $data['info'] = $this->model('dataInfoModel')->getInfo();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $awal = $_POST['awal'];
+            $akhir = $_POST['akhir'];
+            $data['data'] = $this->model('homeModel')->getInfo($awal, $akhir);
+        } else {
+            $data['data'] = $this->model('homeModel')->getInfo();
+        }
         $this->view('admin/home/index', $data, 'default');
     }
 }

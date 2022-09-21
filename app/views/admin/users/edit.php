@@ -46,11 +46,10 @@
                     <label class="col-sm-2 col-form-label" for="password">retype new password</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
+                            <span id="" class="input-group-text"><i class="bx bx-lock"></i></span>
                             <input type="password" id="password" class="form-control" name="retype"
                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                 aria-describedby="password" />
-                            <span id="password" class="input-group-text cursor-pointer"><i
-                                    class="bx bx-hide"></i></span>
                         </div>
                     </div>
                     <div class="row justify-content-end">
