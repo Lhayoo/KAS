@@ -1,10 +1,9 @@
 <?php
-header("Content-type: application/vnd-ms-excel");
-header("Content-Disposition: attachment; filename=laporan-kas.xls");
+$bulan = date('M');
 ?>
-<p align="center" style="font-weight:bold;font-size:16pt">LAPORAN DATA PENGELURAN & PEMASUKKAN BULAN INI</p>
+<p align="center" style="font-weight:bold;font-size:16pt">LAPORAN DATA PENGELURAN & PEMASUKKAN BULAN <?= $bulan ?></p>
 
-<table border="1" align="center">
+<table border="1" align="center" cellspacing="0" cellpadding="5" style="text-align: center;">
     <thead>
         <tr>
             <th>No</th>
@@ -14,7 +13,7 @@ header("Content-Disposition: attachment; filename=laporan-kas.xls");
             <th>Status</th>
         </tr>
     </thead>
-    <tbody class="table-border-bottom-0">
+    <tbody class=" table-border-bottom-0">
         <tr>
             <?php
             $no = 1;
@@ -24,8 +23,8 @@ header("Content-Disposition: attachment; filename=laporan-kas.xls");
             <td><?= $info['tanggal'] ?></td>
             <td><?= $info['keterangan'] ?></td>
             <td>Rp. <?= $info['jumlah'] ?></td>
-            <td>
-                <span class="badge bg-success">Pemasukan</span>
+            <td style="background: red;">
+                Pemasukan
             </td>
         </tr>
         <?php endforeach; ?>
@@ -37,8 +36,8 @@ header("Content-Disposition: attachment; filename=laporan-kas.xls");
         <td><?= $info['tanggal'] ?></td>
         <td><?= $info['keterangan'] ?></td>
         <td><?= $info['jumlah'] ?></td>
-        <td>
-            <span class="badge bg-danger">Pengeluaran</span>
+        <td style="background: red;">
+            Pengeluaran
         </td>
         </tr>
         <?php endforeach; ?>

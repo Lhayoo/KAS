@@ -13,21 +13,15 @@
         <tr>
             <?php
             $no = 1;
-            foreach ($data['kas'] as $kas) :
+            foreach ($data['data']['kas'] as $kas) :
             ?>
             <td><?= $no++ ?></td>
-            <td><?= $kas['nama'] ?></td>
             <td><?= $kas['tanggal'] ?></td>
+            <td><?= $kas['nama'] ?></td>
             <td>Rp. <?= $kas['jumlah'] ?></td>
-            <?php if ($kas['status'] == 'bayar') : ?>
-            <td style="background: green;">
-                bayar
-            </td>
-            <?php elseif ($kas['status'] == 'belum') : ?>
             <td style="background: red;">
-                <?= $kas['status'] ?> bayar
+                Belum bayar
             </td>
-            <?php endif ?>
         </tr>
         <?php endforeach; ?>
     </tbody>

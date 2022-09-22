@@ -72,10 +72,8 @@ class dataKasWargaModel extends Database
         }
         Controller::redirect(BASE_URL . 'dataKasWarga');
     }
-    public function filter($post)
+    public function filter($awal, $akhir)
     {
-        $awal = $post['awal'];
-        $akhir = $post['akhir'];
         $query = $this->connect->query("SELECT `kas`.`id`,`warga`.`nama`,`kas`.`tanggal`,`kas`.`jumlah`,`kas`.`status` FROM kas,warga,users WHERE kas.users_id=users.id AND users.NIK=warga.NIK AND kas.tanggal BETWEEN '$awal' AND '$akhir'");
         return $query;
     }

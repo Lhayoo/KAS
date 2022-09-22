@@ -167,7 +167,7 @@
                             <div class="row">
                                 <div class="col text-center">
                                     <button type="submit" class="btn btn-success" name="filterKas">Filter</button>
-                                    <button type="button" class="btn btn-primary">Cetak</button>
+                                    <a href="<?= BASE_URL . 'Home/exportKas' ?>" class="btn btn-primary">Cetak</a>
                                 </div>
                             </div>
                         </form>
@@ -233,7 +233,7 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <form action="" method="post">
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <div class="col">
                                     <label for="dari" class="m-2">Dari tanggal</label>
                                     <input type="date" class="form-control" name="awal" id="dari"
@@ -244,7 +244,7 @@
                                     <input type="date" name="akhir" id="sampai" class="form-control" placeholder=""
                                         aria-label="Last name">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row">
                                 <div class="col text-center">
                                     <!-- <button type="button" class="btn btn-primary">Cetak</button> -->

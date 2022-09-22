@@ -30,9 +30,20 @@ class Home extends Controller
     {
         $data['active'] = 'Dashboard';
         $data['title'] = 'home';
+        $day = date('M');
         $data['data'] = $this->model('homeModel')->getInfo();
-        // header("Content-type: application/vnd-ms-excel");
-        // header("Content-Disposition: attachment; filename=laporan-excel.xls");
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=laporan data pemasukan dan pengeluran bulan $day.xls");
         $this->view('admin/home/exportData', $data, 'export');
+    }
+
+    public function exportKas()
+    {
+        $data['active'] = 'Dashboard';
+        $data['title'] = 'home';
+        $data['data'] = $this->model('homeModel')->getInfo();
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=laporan warga yang belum kas .xls");
+        $this->view('admin/home/exportKas', $data, 'export');
     }
 }
