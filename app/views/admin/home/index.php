@@ -247,7 +247,8 @@
                             </div>
                             <div class="row">
                                 <div class="col text-center">
-                                    <button type="button" class="btn btn-primary">Cetak</button>
+                                    <!-- <button type="button" class="btn btn-primary">Cetak</button> -->
+                                    <a href="<?= BASE_URL . 'Home/exportData' ?>" class="btn btn-primary">Cetak</a>
                                 </div>
                             </div>
                         </form>

@@ -8,8 +8,8 @@ header("Content-Disposition: attachment; filename=laporan-kas.xls");
     <thead>
         <tr>
             <th>No</th>
-            <th>Nama</th>
             <th>Tanngal</th>
+            <th> Keterangan</th>
             <th>Jumlah</th>
             <th>Status</th>
         </tr>
@@ -18,19 +18,28 @@ header("Content-Disposition: attachment; filename=laporan-kas.xls");
         <tr>
             <?php
             $no = 1;
-            foreach ($data['kas'] as $kas) :
+            foreach ($data['data']['pemasukan'] as $info) :
             ?>
             <td><?= $no++ ?></td>
-            <td><?= $kas['nama'] ?></td>
-            <td><?= $kas['tanggal'] ?></td>
-            <td>Rp. <?= $kas['jumlah'] ?></td>
+            <td><?= $info['tanggal'] ?></td>
+            <td><?= $info['keterangan'] ?></td>
+            <td>Rp. <?= $info['jumlah'] ?></td>
             <td>
-                <?php if ($kas['status'] == 'bayar') : ?>
-                <span class="badge bg-label-success me-1"><?= $kas['status'] ?></span>
-                <?php elseif ($kas['status'] == 'belum') : ?>
-                <span class="badge bg-label-danger"><?= $kas['status'] ?> bayar</span>
-                <?php endif ?>
+                <span class="badge bg-success">Pemasukan</span>
             </td>
+        </tr>
+        <?php endforeach; ?>
+
+        <?php
+    foreach ($data['data']['pengeluaran'] as $info) :
+    ?>
+        <td><?= $no++ ?></td>
+        <td><?= $info['tanggal'] ?></td>
+        <td><?= $info['keterangan'] ?></td>
+        <td><?= $info['jumlah'] ?></td>
+        <td>
+            <span class="badge bg-danger">Pengeluaran</span>
+        </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

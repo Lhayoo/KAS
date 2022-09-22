@@ -26,4 +26,13 @@ class Home extends Controller
         }
         $this->view('admin/home/index', $data, 'default');
     }
+    public function exportData()
+    {
+        $data['active'] = 'Dashboard';
+        $data['title'] = 'home';
+        $data['data'] = $this->model('homeModel')->getInfo();
+        // header("Content-type: application/vnd-ms-excel");
+        // header("Content-Disposition: attachment; filename=laporan-excel.xls");
+        $this->view('admin/home/exportData', $data, 'export');
+    }
 }

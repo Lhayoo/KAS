@@ -12,18 +12,18 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label for="dari" class="m-2">Dari tanggal</label>
-                        <input type="date" class="form-control" name="awal" id="dari" aria-label="First name" required>
+                        <input type="date" class="form-control" name="awal" id="dari" aria-label="First name">
                     </div>
                     <div class="col">
                         <label for="sampai" class="m-2">Sampai tanggal</label>
                         <input type="date" name="akhir" id="sampai" class="form-control" placeholder=""
-                            aria-label="Last name" required>
+                            aria-label="Last name">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col text-center">
                         <button type="submit" class="btn btn-success" name="filter">Filter</button>
-                        <button type="button" class="btn btn-primary" onclick="window.open('export.php')">Cetak</button>
+                        <a href="<?= BASE_URL . 'dataKasWarga/export' ?>" class="btn btn-primary ">Cetak</a>
                     </div>
                 </div>
             </form>

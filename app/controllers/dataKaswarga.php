@@ -20,8 +20,6 @@ class dataKasWarga extends Controller
             if (isset($_POST['filter'])) {
                 $data['kas'] = $this->model('dataKasWargaModel')->filter($_POST);
                 $this->view('admin/kas/dataKasWarga/index', $data, 'default');
-            } elseif (isset($_POST['cetak'])) {
-                $this->view('admin/kas/dataKasWarga/export', $data, 'default');
             } else {
                 $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
             }
@@ -61,5 +59,12 @@ class dataKasWarga extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             return $this->model('dataKasWargaModel')->edit($_POST);
         }
+    }
+    public function export()
+    {
+        $data['active'] = 'dataKasWarga';
+        $data['title'] = 'data KasWarga';
+        $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
+        $this->view('admin/kas/dataKasWarga/export', $data, 'export');
     }
 }
