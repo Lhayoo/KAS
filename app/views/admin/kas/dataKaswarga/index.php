@@ -22,8 +22,8 @@
                 </div>
                 <div class="row">
                     <div class="col text-center">
-                        <button type="submit" class="btn btn-success">Filter</button>
-                        <button type="submit" class="btn btn-primary" onclick="window.open('export.php')">Cetak</button>
+                        <button type="submit" class="btn btn-success" name="filter">Filter</button>
+                        <button type="button" class="btn btn-primary" onclick="window.open('export.php')">Cetak</button>
                     </div>
                 </div>
             </form>

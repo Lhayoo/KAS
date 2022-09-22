@@ -17,9 +17,14 @@ class dataKasWarga extends Controller
         $data['info'] = $this->model('dataInfoModel')->getInfo();
         $data['infoKas'] = $this->model('dataKasWargaModel')->getInfo();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data['kas'] = $this->model('dataKasWargaModel')->filter($_POST);
-            $this->view('admin/kas/dataKasWarga/index', $data, 'default');
-            $this->view('admin/kas/dataKasWarga/export', $data, 'default');
+            if (isset($_POST['filter'])) {
+                $data['kas'] = $this->model('dataKasWargaModel')->filter($_POST);
+                $this->view('admin/kas/dataKasWarga/index', $data, 'default');
+            } elseif (isset($_POST['cetak'])) {
+                $this->view('admin/kas/dataKasWarga/export', $data, 'default');
+            } else {
+                $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
+            }
         } else {
             $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
         }

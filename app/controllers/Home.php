@@ -16,9 +16,11 @@ class Home extends Controller
         $data['title'] = 'home';
         $data['info'] = $this->model('dataInfoModel')->getInfo();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $awal = $_POST['awal'];
-            $akhir = $_POST['akhir'];
-            $data['data'] = $this->model('homeModel')->getInfo($awal, $akhir);
+            if (isset($_POST['filterKas'])) {
+                $data['data'] = $this->model('homeModel')->filterKas($_POST);
+            } else {
+                $data['data'] = $this->model('homeModel')->getInfo();
+            }
         } else {
             $data['data'] = $this->model('homeModel')->getInfo();
         }

@@ -166,7 +166,7 @@
                             </div>
                             <div class="row">
                                 <div class="col text-center">
-                                    <button type="submit" class="btn btn-success">Filter</button>
+                                    <button type="submit" class="btn btn-success" name="filterKas">Filter</button>
                                     <button type="button" class="btn btn-primary">Cetak</button>
                                 </div>
                             </div>
@@ -247,7 +247,6 @@
                             </div>
                             <div class="row">
                                 <div class="col text-center">
-                                    <button type="submit" class="btn btn-success">Filter</button>
                                     <button type="button" class="btn btn-primary">Cetak</button>
                                 </div>
                             </div>
