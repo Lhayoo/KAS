@@ -23,7 +23,8 @@
                 <div class="row">
                     <div class="col text-center">
                         <button type="submit" class="btn btn-success" name="filter">Filter</button>
-                        <a href="<?= BASE_URL . 'dataKasWarga/export' ?>" class="btn btn-primary ">Cetak</a>
+                        <button type="submit" class="btn btn-success" name="cetak">Filter</button>
+                        <!-- <a href="<?= BASE_URL . 'dataKasWarga/export' ?>" class="btn btn-primary ">Cetak</a> -->
                     </div>
                 </div>
             </form>

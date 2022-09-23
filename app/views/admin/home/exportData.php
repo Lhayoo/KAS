@@ -23,7 +23,7 @@ $bulan = date('M');
             <td><?= $info['tanggal'] ?></td>
             <td><?= $info['keterangan'] ?></td>
             <td>Rp. <?= $info['jumlah'] ?></td>
-            <td style="background: red;">
+            <td style="background: green;">
                 Pemasukan
             </td>
         </tr>
