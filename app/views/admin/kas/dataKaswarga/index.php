@@ -12,23 +12,34 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label for="dari" class="m-2">Dari tanggal</label>
-                        <input type="date" class="form-control" name="awal" id="dari" aria-label="First name">
+                        <input type="date" class="form-control" name="awal" id="dari" aria-label="First name"
+                            value="value">
                     </div>
                     <div class="col">
                         <label for="sampai" class="m-2">Sampai tanggal</label>
                         <input type="date" name="akhir" id="sampai" class="form-control" placeholder=""
-                            aria-label="Last name">
+                            aria-label="Last name" value="value">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col text-center">
                         <button type="submit" class="btn btn-success" name="filter">Filter</button>
-                        <button type="submit" class="btn btn-success" name="cetak">Filter</button>
-                        <!-- <a href="<?= BASE_URL . 'dataKasWarga/export' ?>" class="btn btn-primary ">Cetak</a> -->
+                        <!-- <button type="submit" class="btn btn-primary" name="cetak">Cetak</button> -->
+                        <a href="<?= BASE_URL . 'dataKasWarga/export' ?>" class="btn btn-primary">Cetak</a>
+                        <button type="submit" class="btn btn-danger" name="rekap">Rekap kas</button>
                     </div>
                 </div>
             </form>
         </div>
+
+        <!-- <form action="dataKasWarga/export" method="POST">
+            <script>
+            let $awal = document.getElementById("awal").value;
+            let $akhir = document.getElementById("akhir").value;
+            print_r($awal);
+            </script>
+            <input type="text" value="$awal">
+        </form> -->
     </div>
     <div class="card shadow-none">
         <div class="d-flex align-items-center justify-content-between px-3 ">

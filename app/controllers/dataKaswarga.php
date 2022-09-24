@@ -17,21 +17,16 @@ class dataKasWarga extends Controller
         $data['info'] = $this->model('dataInfoModel')->getInfo();
         $data['infoKas'] = $this->model('dataKasWargaModel')->getInfo();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $awal = $_POST['awal'];
+            $akhir = $_POST['akhir'];
             if (isset($_POST['filter'])) {
-                $awal = $_POST['awal'];
-                $akhir = $_POST['akhir'];
                 $data['kas'] = $this->model('dataKasWargaModel')->filter($awal, $akhir);
+                $kas['kas'] = $this->model('dataKasWargaModel')->filter($awal, $akhir);
+                // $this->view('admin/kas/dataKasWarga/export', $data, 'export');
                 $this->view('admin/kas/dataKasWarga/index', $data, 'default');
-                if (isset($_POST['cetak'])) {
-                    $data['active'] = 'dataKasWarga';
-                    $data['title'] = 'data KasWarga';
-                    // $awal = $_POST['awal'];
-                    // $akhir = $_POST['akhir'];
-                    $data['kas'] = $this->model('dataKasWargaModel')->filter($awal, $akhir);
-                    // header("Content-type: application/vnd-ms-excel");
-                    // header("Content-Disposition: attachment; filename=laporan-kas.xls");
-                    $this->view('admin/kas/dataKasWarga/export', $data, 'export');
-                }
+                // $this->view('admin/kas/dataKasWarga/export', $kas, 'export');
+            } elseif (isset($_POST['rekap'])) {
+                return $this->model('dataKasWargaModel')->rekap($awal, $akhir);
             } else {
                 $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
             }
@@ -40,6 +35,18 @@ class dataKasWarga extends Controller
         }
         $this->view('admin/kas/dataKasWarga/index', $data, 'default');
     }
+    // public function export()
+    // {
+    //     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    //         $data['active']  = 'dataKasWarga';
+    //         $data['title']  = 'data kas';
+    //         $awal = $_GET['awal'];
+    //         $akhir = $_GET['akhir'];
+    //         $data['kas'] = $this->model('dataKasWargaModel')->filter($awal, $akhir);
+    //         // $this->view('admin/kas/dataKasWarga/tambah', $data, 'default');
+    //         $this->view('admin/kas/dataKasWarga/export', $data, 'export');
+    //     }
+    // }
     public function tambah()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -73,16 +80,3 @@ class dataKasWarga extends Controller
         }
     }
 }
-    // public function export()
-    // {
-    //     $data['active'] = 'dataKasWarga';
-    //     $data['title'] = 'data KasWarga';
-    //     // if (isset($_POST['filter'])) {
-    //     // $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
-    //     // } else {
-    //     //     $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
-    //     // }
-    //     // header("Content-type: application/vnd-ms-excel");
-    //     // header("Content-Disposition: attachment; filename=laporan-kas.xls");
-    //     $this->view('admin/kas/dataKasWarga/export', $data, 'default');
-    // }
