@@ -13,12 +13,12 @@
                     <div class="col">
                         <label for="dari" class="m-2">Dari tanggal</label>
                         <input type="date" class="form-control" name="awal" id="dari" aria-label="First name"
-                            value="value">
+                            value="value" required>
                     </div>
                     <div class="col">
                         <label for="sampai" class="m-2">Sampai tanggal</label>
                         <input type="date" name="akhir" id="sampai" class="form-control" placeholder=""
-                            aria-label="Last name" value="value">
+                            aria-label="Last name" value="value" required>
                     </div>
                 </div>
                 <div class="row">

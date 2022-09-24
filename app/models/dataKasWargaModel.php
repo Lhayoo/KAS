@@ -81,12 +81,18 @@ class dataKasWargaModel extends Database
     {
         $tanggal = date('Y-m-d');
         $bulan = date('M');
+        $tahun = date('Y');
         $jumlah = $this->connect->query("SELECT SUM(jumlah) AS jumlah FROM kas WHERE tanggal BETWEEN '$awal' AND '$akhir'")->fetch_assoc()['jumlah'];
-        $insert = $this->connect->query("INSERT INTO `pemasukan` (`saldo_id`,`tanggal`, `jumlah`, `keterangan`) VALUES ('1','$tanggal' ,'$jumlah', 'Total pemasukan kas bulan $bulan ');");
-        if ($insert) {
-            Flash::setFlash('Data berhasil direkap', 'success');
+        $cekrekap = $this->connect->query("SELECT tanggal FROM pemasukan WHERE tanggal = '$tanggal'")->fetch_assoc()['tanggal'];
+        if ($tanggal == $cekrekap) {
+            Flash::setFlash('Rekap sudah dilakukan', 'danger');
         } else {
-            Flash::setFlash('Data gagal direkap', 'danger');
+            $insert = $this->connect->query("INSERT INTO `pemasukan` (`saldo_id`,`tanggal`, `jumlah`, `keterangan`) VALUES ('1','$tanggal' ,'$jumlah', 'Total pemasukan kas bulan $bulan tahun $tahun');");
+            if ($insert) {
+                Flash::setFlash('Data berhasil direkap', 'success');
+            } else {
+                Flash::setFlash('Data gagal direkap', 'danger');
+            }
         }
         Controller::redirect(BASE_URL . 'dataKasWarga');
     }
