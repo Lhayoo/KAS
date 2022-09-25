@@ -38,14 +38,15 @@
     <!-- Helpers -->
     <script src="<?= BASE_URL ?>assets/vendor/js/helpers.js"></script>
 
-    <!-- JQuery js -->
-    <script src="<?= BASE_URL ?>assets/js/jQuery.min.js"></script>
-
-
+    <!-- dataTables -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/dataTables/DataTables-1.12.1/js/jquery.dataTables.min.js">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/dataTables/datatables.min.css">
+    <script src="<?= BASE_URL ?>assets/dataTables/datatables.min.js"></script>
+    <script src="<?= BASE_URL ?>assets/dataTables/data.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="<?= BASE_URL ?>assets/js/config.js"></script>
+    <script src=" <?= BASE_URL ?>assets/js/config.js"></script>
     <style>
     @media screen and (min-width: 800px) {
         .dekstop {
@@ -121,8 +122,6 @@
     <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-
-
 
     <!-- build:js assets/vendor/js/core.js -->
     <script src="<?= BASE_URL ?>assets/vendor/libs/jquery/jquery.js"></script>

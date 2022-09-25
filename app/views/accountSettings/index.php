@@ -9,7 +9,7 @@
             Flash::getFlash();
             ?>
             <form method="POST">
-                <div class="card-body">
+                <!-- <div class="card-body">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img src="<?= BASE_URL ?>assets/img/profile/<?= $data['info']['profile'] ?>" alt="profile"
                             class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
@@ -22,7 +22,7 @@
                             <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <hr class="my-0" />
                 <div class="card-body">
                     <div class="row">

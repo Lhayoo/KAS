@@ -102,7 +102,7 @@
         </div>
     </div>
     <!-- end bar info -->
-    <div class="row mt-4 ">
+    <!-- <div class="row mt-4 ">
         <div class="col-lg-12 mx-auto col-md-6 mt-4 mb-4 dekstop">
             <div class="card z-index-2 card-inverse">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
@@ -137,9 +137,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- data kas yang belum bayar -->
-    <div class="row ">
+    <div class="row mt-5">
         <div class="col-lg-12 mx-auto col-md-6 mb-4">
             <div class="card accordion-item mb-2 shadow-none">
                 <h2 class="accordion-header" id="headingTwo">

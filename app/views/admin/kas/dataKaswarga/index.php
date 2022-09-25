@@ -47,7 +47,7 @@
         Flash::getFlash()
         ?>
         <div class="table-responsive text-nowrap text-center">
-            <table class="table display" id="example">
+            <table class="table display" id="kas">
                 <thead>
                     <tr>
                         <th>No</th>
