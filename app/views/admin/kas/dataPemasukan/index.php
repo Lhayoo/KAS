@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col text-center">
                         <button type="submit" class="btn btn-success">Filter</button>
-                        <button type="button" class="btn btn-primary">Cetak</button>
+                        <a href="<?= BASE_URL . 'dataPemasukan/export' ?>" class="btn btn-primary">Cetak</a>
                     </div>
                 </div>
             </form>

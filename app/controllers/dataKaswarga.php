@@ -35,18 +35,16 @@ class dataKasWarga extends Controller
         }
         $this->view('admin/kas/dataKasWarga/index', $data, 'default');
     }
-    // public function export()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    //         $data['active']  = 'dataKasWarga';
-    //         $data['title']  = 'data kas';
-    //         $awal = $_GET['awal'];
-    //         $akhir = $_GET['akhir'];
-    //         $data['kas'] = $this->model('dataKasWargaModel')->filter($awal, $akhir);
-    //         // $this->view('admin/kas/dataKasWarga/tambah', $data, 'default');
-    //         $this->view('admin/kas/dataKasWarga/export', $data, 'export');
-    //     }
-    // }
+    public function export()
+    {
+        $data['active']  = 'dataKasWarga';
+        $data['title']  = 'data kas';
+        $data['kas'] = $this->model('dataKasWargaModel')->getInfo();
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=laporan warga yang belum kas .xls");
+        // $this->view('admin/kas/dataKasWarga/tambah', $data, 'default');
+        $this->view('admin/kas/dataKasWarga/export', $data, 'export');
+    }
     public function tambah()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {

@@ -16,8 +16,8 @@
             foreach ($data['kas'] as $kas) :
             ?>
             <td><?= $no++ ?></td>
-            <td><?= $kas['nama'] ?></td>
             <td><?= $kas['tanggal'] ?></td>
+            <td><?= $kas['nama'] ?></td>
             <td>Rp. <?= $kas['jumlah'] ?></td>
             <?php if ($kas['status'] == 'bayar') : ?>
             <td style="background: green;">

@@ -31,15 +31,6 @@
                 </div>
             </form>
         </div>
-
-        <!-- <form action="dataKasWarga/export" method="POST">
-            <script>
-            let $awal = document.getElementById("awal").value;
-            let $akhir = document.getElementById("akhir").value;
-            print_r($awal);
-            </script>
-            <input type="text" value="$awal">
-        </form> -->
     </div>
     <div class="card shadow-none">
         <div class="d-flex align-items-center justify-content-between px-3 ">

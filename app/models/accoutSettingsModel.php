@@ -33,7 +33,7 @@ class accoutSettingsModel extends Database
     {
         $id = $_SESSION['user']['id'];
         $nik = htmlspecialchars($post['nik']);
-        $no_telfon = htmlspecialchars($post['no_telfon']);
+        $no_telfon = $post['no_telfon'];
         $profile = $_FILES['profile']['name'];
         $tmp = $_FILES['profile']['tmp_name'];
         $x = explode('.', $profile);
@@ -42,14 +42,25 @@ class accoutSettingsModel extends Database
         if (!empty($no_telfon)) {
             if ($_FILES['profile']['name'] != '') {
                 if (!in_array($ext, ['jpg', 'png', 'jpeg'])) {
-                    Flash::setFlash('Ekstensi , hanya jpg,jpeg,png', 'danger');
-                    Controller::redirect(BASE_URL . 'AccoutSettings');
-                } elseif ($profile == $old_profile) {
+                    Flash::setFlash('Invalid ekstensi , hanya jpg,jpeg,png', 'danger');
+                    Controller::redirect(BASE_URL . 'accountSettings');
+                } elseif ($old_profile != 'person.png') {
                     if (file_exists('assets/img/profile/' . $old_profile)) {
                         unlink('assets/img/profile/' . $old_profile);
                     }
+                    $update = $this->connect->query("UPDATE `users` SET `profile` = '$profile' WHERE `users`.`id` = '$id'");
+                    if ($update) {
+                        if (!is_dir('assets/img/profile')) {
+                            mkdir('assets/img/profile');
+                        }
+                        if (is_dir('assets/img/profile')) {
+                            move_uploaded_file($tmp, 'assets/img/profile/' . $profile);
+                        }
+                        Flash::setFlash('Berhasil Mengedit profile', 'success');
+                        Controller::redirect(BASE_URL . 'accountSettings');
+                    }
                 } else {
-                    $update = $this->connect->query("UPDATE `users` SET `profile` = '$profile' WHERE `users`.`id` = '$id';");
+                    $update = $this->connect->query("UPDATE `users` SET `profile` = '$profile' WHERE `users`.`id` = '$id'");
                     if ($update) {
                         if (!is_dir('assets/img/profile')) {
                             mkdir('assets/img/profile');
@@ -62,7 +73,7 @@ class accoutSettingsModel extends Database
                     }
                 }
             } else {
-                $update = $this->connect->query("UPDATE warga SET `no_telfon` = '$no_telfon' WHERE `NIK` = '$nik'");
+                $update = $this->connect->query("UPDATE `warga` SET `no_telfon` = '$no_telfon' WHERE `warga`.`NIK` = $nik;");
                 if ($update) {
                     Flash::setFlash('Berhasil Mengedit profile', 'success');
                     Controller::redirect(BASE_URL . 'accountSettings');

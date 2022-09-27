@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="fw-semibold d-block mb-1">Total Saldo</span>
+                <span class="fw-semibold d-block mb-1">Total saldo kas warga</span>
                 <h3 class="card-title mb-2">Rp. <?= $data['data']['total_saldo'] ?></h3>
                 <!-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> -->
             </div>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="fw-semibold d-block mb-1">Total Kas </span>
+                <span class="fw-semibold d-block mb-1">Total kas saya </span>
                 <h3 class="card-title mb-2">Rp. <?= $data['data']['total_kas'] ?></h3>
                 <!-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> -->
             </div>

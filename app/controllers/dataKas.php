@@ -14,8 +14,19 @@ class dataKas extends Controller
     {
         $data['active'] = 'dataKas';
         $data['title'] = 'Data Kas';
-        $data['kas'] = $this->model('dataKasModel')->getKasById();
         $data['info'] = $this->model('dataInfoModel')->getInfo();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $awal = $_POST['awal'];
+            $akhir = $_POST['akhir'];
+            if (isset($_POST['filter'])) {
+                $data['kas'] = $this->model('dataKasModel')->filter($awal, $akhir);
+                $this->view('anggota/kas/dataKas/index', $data, 'default');
+            } else {
+                $data['kas'] = $this->model('dataKasModel')->getKasById();
+            }
+        } else {
+            $data['kas'] = $this->model('dataKasModel')->getKasById();
+        }
         $this->view('anggota/kas/dataKas/index', $data, 'default');
     }
 }

@@ -22,6 +22,15 @@ class dataPengeluaran extends Controller
         }
         $this->view('admin/kas/dataPengeluaran/index', $data, 'default');
     }
+    public function export()
+    {
+        $data['active']  = 'dataKasWarga';
+        $data['title']  = 'data kas';
+        $data['pengeluaran'] = $this->model('dataPengeluaranModel')->getInfo();
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=laporan pengeluaran .xls");
+        $this->view('admin/kas/dataPengeluaran/export', $data, 'export');
+    }
     public function tambah()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {

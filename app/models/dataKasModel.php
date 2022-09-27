@@ -18,4 +18,10 @@ class dataKasModel extends Database
         $query = $this->connect->query("SELECT * FROM kas WHERE tanggal BETWEEN '$tgl1' AND '$tgl31'");
         return $query;
     }
+    public function filter($awal, $akhir)
+    {
+        $user_id = $_SESSION['user']['id'];
+        $query = $this->connect->query("SELECT * FROM kas WHERE tanggal BETWEEN '$awal' AND '$akhir' AND users_id='$user_id'");
+        return $query;
+    }
 }

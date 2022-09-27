@@ -14,8 +14,12 @@ class pemasukan extends Controller
     {
         $data['active'] = 'pemasukan';
         $data['title'] = 'Data pemasukan';
-        $data['pemasukan'] = $this->model('pemasukanModel')->getInfo();
         $data['info'] = $this->model('dataInfoModel')->getInfo();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data['pemasukan'] = $this->model('dataPemasukanModel')->filter($_POST);
+        } else {
+            $data['pemasukan'] = $this->model('dataPemasukanModel')->getInfo();
+        }
         $this->view('anggota/kas/dataPemasukan/index', $data, 'default');
     }
 }

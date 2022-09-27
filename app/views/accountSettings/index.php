@@ -8,8 +8,8 @@
 
             Flash::getFlash();
             ?>
-            <form method="POST">
-                <!-- <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="card-body">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img src="<?= BASE_URL ?>assets/img/profile/<?= $data['info']['profile'] ?>" alt="profile"
                             class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
@@ -22,7 +22,7 @@
                             <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <hr class="my-0" />
                 <div class="card-body">
                     <div class="row">
@@ -44,8 +44,8 @@
                         <div class=" mb-3 col-md-6">
                             <label class="form-label" for="telpon">Phone Number</label>
                             <div class="input-group input-group-merge">
-                                <input type="text" id="telpon" name="no_telfon" class="form-control"
-                                    value="<?= $data['info']['no_telfon'] ?>" />
+                                <input type="tel" id="telpon" name="no_telfon" class="form-control"
+                                    value="<?= $data['info']['no_telfon'] ?>" maxlength="14" />
                             </div>
                         </div>
                         <div class="mb-3 col-md-6">
@@ -61,7 +61,7 @@
                         <div class="mb-3 col-md-6">
                             <label for="tanggal" class="form-label">Tanggal lahir</label>
                             <input type="date" class="form-control" id="tanggal" readonly
-                                value="<?= $data['info']['tanggal_lahir'] ?>" placeholder="dd-mm-yy" />
+                                value="<?= $data['info']['tanggal_lahir'] ?>" />
                         </div>
                     </div>
                     <div class="mt-2">
@@ -95,11 +95,13 @@
                     <label class="col-sm-2 col-form-label" for="password">New password</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-   fullname2" class="input-group-text"><i z
+                                    class="bx bx-lock"></i></span>
                             <input type="password" id="password" class="form-control" name="newPas"
                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                 aria-describedby="newPas" />
-                            <span id="password" class="input-group-text cursor-pointer"><i
-                                    class="bx bx-hide"></i></span>
+                            <!-- <span id="password" class="input-group-text cursor-pointer"><i
+                                    class="bx bx-hide"></i></span> -->
                         </div>
                     </div>
                 </div>
@@ -107,11 +109,13 @@
                     <label class="col-sm-2 col-form-label" for="retype">retype new password</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-   fullname2" class="input-group-text"><i z
+                                    class="bx bx-lock"></i></span>
                             <input type="password" id="retype" class="form-control" name="retype"
                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                 aria-describedby="password" />
-                            <span id="password" class="input-group-text cursor-pointer"><i
-                                    class="bx bx-hide"></i></span>
+                            <!-- <span id="password" class="input-group-text cursor-pointer"><i
+                                    class="bx bx-hide"></i></span> -->
                         </div>
                     </div>
                 </div>

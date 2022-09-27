@@ -22,6 +22,15 @@ class dataPemasukan extends Controller
         }
         $this->view('admin/kas/dataPemasukan/index', $data, 'default');
     }
+    public function export()
+    {
+        $data['active']  = 'dataKasWarga';
+        $data['title']  = 'data kas';
+        $data['pemasukan'] = $this->model('dataPemasukanModel')->getInfo();
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=laporan pemasukan .xls");
+        $this->view('admin/kas/dataPemasukan/export', $data, 'export');
+    }
     public function tambah()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
