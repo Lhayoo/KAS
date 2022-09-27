@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2022 at 10:39 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Waktu pembuatan: 27 Sep 2022 pada 06.08
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kas`
+-- Struktur dari tabel `kas`
 --
 
 CREATE TABLE `kas` (
@@ -35,10 +35,17 @@ CREATE TABLE `kas` (
   `status` enum('bayar','belum','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `kas`
+--
+
+INSERT INTO `kas` (`id`, `users_id`, `tanggal`, `jumlah`, `status`) VALUES
+(1, 13, '2022-09-27', 5000, 'bayar');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pemasukan`
+-- Struktur dari tabel `pemasukan`
 --
 
 CREATE TABLE `pemasukan` (
@@ -50,7 +57,15 @@ CREATE TABLE `pemasukan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Triggers `pemasukan`
+-- Dumping data untuk tabel `pemasukan`
+--
+
+INSERT INTO `pemasukan` (`id`, `saldo_id`, `tanggal`, `keterangan`, `jumlah`) VALUES
+(1, 1, '2022-09-27', 'Total pemasukan kas bulan Sep tahun 2022', 5000),
+(2, 1, '2022-09-27', 'asdasd', 123123);
+
+--
+-- Trigger `pemasukan`
 --
 DELIMITER $$
 CREATE TRIGGER `hapus_pemasukan` AFTER DELETE ON `pemasukan` FOR EACH ROW BEGIN
@@ -68,7 +83,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengeluaran`
+-- Struktur dari tabel `pengeluaran`
 --
 
 CREATE TABLE `pengeluaran` (
@@ -80,7 +95,14 @@ CREATE TABLE `pengeluaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Triggers `pengeluaran`
+-- Dumping data untuk tabel `pengeluaran`
+--
+
+INSERT INTO `pengeluaran` (`id`, `saldo_id`, `tanggal`, `keterangan`, `jumlah`) VALUES
+(1, 1, '2022-09-27', 'ASDASD', 1231);
+
+--
+-- Trigger `pengeluaran`
 --
 DELIMITER $$
 CREATE TRIGGER `hapus_pengeluaran` AFTER DELETE ON `pengeluaran` FOR EACH ROW BEGIN
@@ -98,7 +120,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `saldo`
+-- Struktur dari tabel `saldo`
 --
 
 CREATE TABLE `saldo` (
@@ -107,16 +129,16 @@ CREATE TABLE `saldo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `saldo`
+-- Dumping data untuk tabel `saldo`
 --
 
 INSERT INTO `saldo` (`id`, `total`) VALUES
-(1, 0);
+(1, 126892);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -130,23 +152,24 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `NIK`, `username`, `password`, `role`, `profile`, `last_login`) VALUES
-(7, 12, 'admin', 'admin123', 'admin', '', '2022-09-18 15:30:08');
+(7, 12, 'admin', 'admin', 'admin', 'person.png', '2022-09-27 11:07:20'),
+(13, 111, 'alam', 'alam', 'anggota', 'user.png', '2022-09-27 09:38:15');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `warga`
+-- Struktur dari tabel `warga`
 --
 
 CREATE TABLE `warga` (
   `NIK` int(16) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
-  `no_telfon` int(11) NOT NULL,
+  `no_telfon` varchar(14) NOT NULL,
   `pekerjaan` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
   `jenis_kelamin` enum('Laki-Laki','Perempuan') NOT NULL,
@@ -154,108 +177,110 @@ CREATE TABLE `warga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `warga`
+-- Dumping data untuk tabel `warga`
 --
 
 INSERT INTO `warga` (`NIK`, `nama`, `alamat`, `no_telfon`, `pekerjaan`, `status`, `jenis_kelamin`, `tanggal_lahir`) VALUES
-(12, 'admin', 'admn', 0, 'admin', 'Menikah', 'Laki-Laki', '2019-02-14');
+(12, 'admin', 'admn', '089570302454', 'admin', 'Menikah', 'Laki-Laki', '2019-02-14'),
+(111, 'alam', 'medono', '0895703024454', 'mahsiswa', 'Belum Menikah', 'Laki-Laki', '2003-11-19'),
+(123, 'asdasd', 'asdasd', '0', 'admin', 'Menikah', 'Laki-Laki', '2010-01-27');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `kas`
+-- Indeks untuk tabel `kas`
 --
 ALTER TABLE `kas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_users` (`users_id`);
 
 --
--- Indexes for table `pemasukan`
+-- Indeks untuk tabel `pemasukan`
 --
 ALTER TABLE `pemasukan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `saldo_id` (`saldo_id`);
 
 --
--- Indexes for table `pengeluaran`
+-- Indeks untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   ADD PRIMARY KEY (`id`),
   ADD KEY `saldo_id` (`saldo_id`);
 
 --
--- Indexes for table `saldo`
+-- Indeks untuk tabel `saldo`
 --
 ALTER TABLE `saldo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `warga`
+-- Indeks untuk tabel `warga`
 --
 ALTER TABLE `warga`
   ADD PRIMARY KEY (`NIK`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `kas`
+-- AUTO_INCREMENT untuk tabel `kas`
 --
 ALTER TABLE `kas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `pemasukan`
+-- AUTO_INCREMENT untuk tabel `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `pengeluaran`
+-- AUTO_INCREMENT untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `saldo`
+-- AUTO_INCREMENT untuk tabel `saldo`
 --
 ALTER TABLE `saldo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `kas`
+-- Ketidakleluasaan untuk tabel `kas`
 --
 ALTER TABLE `kas`
   ADD CONSTRAINT `kas_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `pemasukan`
+-- Ketidakleluasaan untuk tabel `pemasukan`
 --
 ALTER TABLE `pemasukan`
   ADD CONSTRAINT `pemasukan_ibfk_1` FOREIGN KEY (`saldo_id`) REFERENCES `saldo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `pengeluaran`
+-- Ketidakleluasaan untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   ADD CONSTRAINT `pengeluaran_ibfk_1` FOREIGN KEY (`saldo_id`) REFERENCES `saldo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
