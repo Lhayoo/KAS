@@ -123,6 +123,25 @@
     </div>
     <!-- / Layout wrapper -->
 
+
+    <!-- Preview -->
+    <script>
+    function preview() {
+        const profile = document.querySelector('#profile');
+        const profileLabel = document.querySelector('.label');
+        const imgPreview = document.querySelector('.img-preview');
+
+        profileLabel.textContent = profile.files[0].name;
+
+        const fileProfile = new FileReader();
+        fileProfile.readAsDataURL(profile.files[0]);
+
+        fileProfile.onload = function(e) {
+            imgPreview.src = e.target.result;
+        }
+    }
+    </script>
+
     <!-- build:js assets/vendor/js/core.js -->
     <script src="<?= BASE_URL ?>assets/vendor/libs/jquery/jquery.js"></script>
     <script src="<?= BASE_URL ?>assets/vendor/libs/popper/popper.js"></script>
